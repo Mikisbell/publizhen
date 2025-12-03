@@ -1,61 +1,95 @@
-import { Package, Monitor, Gamepad2, Layers } from 'lucide-react';
+import { Package, Monitor, Gamepad2, Layers, ArrowUpRight } from 'lucide-react';
 
 const categories = [
     {
         id: 'materiales',
-        title: 'Materiales y Herramientas',
-        icon: <Package size={40} className="text-[var(--brand-pink)]" />,
-        items: ['Láminas de PVC blanco (Celtx)', 'Vinilos', 'Laminados', 'Lonas']
+        title: 'Materiales',
+        subtitle: 'Insumos de Producción',
+        icon: <Package size={32} />,
+        color: 'var(--signal-pink)',
+        items: ['Láminas de PVC (Celtx)', 'Vinilos Adhesivos', 'Laminados Mate/Brillo', 'Lonas Front/Back'],
+        image: '/images/service-print.png'
     },
     {
         id: 'displays',
-        title: 'Displays Publicitarios',
-        icon: <Monitor size={40} className="text-[var(--brand-magenta)]" />,
-        items: ['Rollscreen', 'X-banner', 'Banners con parante', 'Módulos', 'Backing', 'Pórticos', 'Tótems']
+        title: 'Displays',
+        subtitle: 'Sistemas de Exhibición',
+        icon: <Monitor size={32} />,
+        color: 'var(--signal-orange)',
+        items: ['Rollscreen Aluminio', 'X-banner', 'Módulos PVC', 'Backing de Prensa', 'Pórticos Publicitarios'],
+        image: '/images/product-rollup.png'
     },
     {
         id: 'btl',
-        title: 'Juegos BTL',
-        icon: <Gamepad2 size={40} className="text-[var(--brand-orange)]" />,
-        items: ['Ruletas', 'Ánforas', 'Dados', 'Marcos selfie', 'Tiro al blanco', 'Metegol MDF', 'Juegos de memoria']
+        title: 'Activación BTL',
+        subtitle: 'Juegos y Dinámicas',
+        icon: <Gamepad2 size={32} />,
+        color: 'var(--signal-yellow)',
+        items: ['Ruletas de Premio', 'Ánforas Acrílicas', 'Dados Gigantes', 'Marcos Selfie', 'Juegos de Memoria'],
+        image: '/images/product-neon.png'
     },
     {
         id: 'corporeos',
-        title: 'Corpóreos y Dummys',
-        icon: <Layers size={40} className="text-[var(--brand-yellow)]" />,
-        items: ['Letras volumétricas', 'Dummys de producto', 'Corpóreos en MDF/PVC']
+        title: 'Corpóreos',
+        subtitle: 'Volumetría y 3D',
+        icon: <Layers size={32} />,
+        color: 'var(--signal-magenta)',
+        items: ['Letras Block (MDF/PVC)', 'Logos Volumétricos', 'Dummys de Producto', 'Señalética 3D'],
+        image: '/images/service-design.png'
     }
 ];
 
 const Products = () => {
     return (
-        <div className="pt-24 pb-16 animate-fade-in">
-            <div className="container mx-auto px-4">
-                <h1 className="text-4xl md:text-5xl font-bold text-center mb-4 neon-text">Nuestros Productos</h1>
-                <p className="text-xl text-slate-600 text-center mb-16 max-w-2xl mx-auto">
-                    Encuentra todo lo necesario para potenciar la visibilidad de tu marca con materiales de alta calidad.
+        <div className="pt-32 pb-20 min-h-screen">
+            <div className="container-fluid mb-20">
+                <h1 className="text-[8vw] leading-none font-black uppercase tracking-tighter mb-4">
+                    Catálogo <span className="text-[var(--signal-orange)]">.</span>
+                </h1>
+                <p className="text-xl font-medium text-black/60 max-w-2xl border-l-2 border-black pl-6">
+                    Herramientas físicas para potenciar tu comunicación visual.
                 </p>
+            </div>
 
-                <div className="bento-grid">
-                    {categories.map((category) => (
-                        <div key={category.id} className="glass-panel rounded-3xl p-8 bento-card neon-box hover:scale-[1.02] transition-transform duration-300">
-                            <div className="flex items-center mb-6">
-                                <div className="p-3 bg-white/50 rounded-xl mr-4 border border-white/60">
-                                    {category.icon}
-                                </div>
-                                <h2 className="text-2xl font-bold text-slate-800">{category.title}</h2>
-                            </div>
-                            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                {category.items.map((item, index) => (
-                                    <li key={index} className="flex items-center text-slate-600">
-                                        <span className="w-2 h-2 bg-[var(--brand-pink)] rounded-full mr-3 shadow-[0_0_10px_var(--brand-pink)]"></span>
-                                        {item}
-                                    </li>
-                                ))}
-                            </ul>
+            <div className="border-t border-black/10">
+                {categories.map((category, index) => (
+                    <div key={category.id} className="group border-b border-black/10 hover:bg-white transition-colors duration-500 overflow-hidden relative">
+                        {/* Subtle Background Image on Hover */}
+                        <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none">
+                            <img src={category.image} alt={category.title} className="w-full h-full object-cover" />
                         </div>
-                    ))}
-                </div>
+
+                        <div className="container-fluid py-16 grid grid-cols-1 lg:grid-cols-12 gap-8 relative z-10">
+                            {/* Header */}
+                            <div className="lg:col-span-4 flex flex-col justify-between">
+                                <div>
+                                    <span className="text-sm font-bold uppercase tracking-widest text-black/40 mb-2 block">0{index + 1}</span>
+                                    <h2 className="text-5xl font-black uppercase mb-2 group-hover:text-[var(--ink)] transition-colors" style={{ color: category.color }}>
+                                        {category.title}
+                                    </h2>
+                                    <p className="text-lg font-medium text-black/60">{category.subtitle}</p>
+                                </div>
+                                <div className="mt-8 lg:mt-0 hidden lg:block opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                    <ArrowUpRight size={48} style={{ color: category.color }} />
+                                </div>
+                            </div>
+
+                            {/* Items Grid */}
+                            <div className="lg:col-span-8">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+                                    {category.items.map((item, idx) => (
+                                        <div key={idx} className="flex items-center border-b border-black/5 pb-4 group/item">
+                                            <div className="w-2 h-2 rounded-full mr-4 transition-all duration-300 group-hover/item:scale-150" style={{ backgroundColor: category.color }}></div>
+                                            <span className="text-xl font-bold text-black/80 group-hover/item:text-black transition-colors">
+                                                {item}
+                                            </span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
     );

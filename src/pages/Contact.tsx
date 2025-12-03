@@ -2,67 +2,57 @@ import { Mail, Phone, MapPin, Send } from 'lucide-react';
 
 const Contact = () => {
     return (
-        <div className="pt-24 pb-16 animate-fade-in">
-            <div className="container mx-auto px-4">
-                <h1 className="text-4xl md:text-5xl font-bold text-center mb-4 neon-text">Contáctanos</h1>
-                <p className="text-xl text-slate-600 text-center mb-16 max-w-2xl mx-auto">
-                    Estamos listos para hacer realidad tus proyectos. Escríbenos o visítanos.
+        <div className="pt-32 pb-20 min-h-screen">
+            <div className="container-fluid mb-20">
+                <h1 className="text-[8vw] leading-none font-black uppercase tracking-tighter mb-4">
+                    Contacto <span className="text-[var(--signal-pink)]">.</span>
+                </h1>
+                <p className="text-xl font-medium text-black/60 max-w-2xl border-l-2 border-black pl-6">
+                    Inicia tu próximo gran proyecto con nosotros.
                 </p>
+            </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-                    {/* Contact Info */}
-                    <div className="space-y-8">
-                        <div className="flex items-start space-x-4 glass-panel p-6 rounded-2xl neon-box">
-                            <div className="bg-[var(--brand-pink)]/10 p-4 rounded-lg">
-                                <Phone size={24} className="text-[var(--brand-pink)]" />
-                            </div>
-                            <div>
-                                <h3 className="text-xl font-bold mb-2 text-slate-800">Llámanos</h3>
-                                <p className="text-slate-600">+51 976 277 993</p>
-                            </div>
-                        </div>
-
-                        <div className="flex items-start space-x-4 glass-panel p-6 rounded-2xl neon-box">
-                            <div className="bg-[var(--brand-magenta)]/10 p-4 rounded-lg">
-                                <Mail size={24} className="text-[var(--brand-magenta)]" />
-                            </div>
-                            <div>
-                                <h3 className="text-xl font-bold mb-2 text-slate-800">Escríbenos</h3>
-                                <p className="text-slate-600">contacto@publizhen.com</p>
-                                <p className="text-slate-600">ventas@publizhen.com</p>
-                            </div>
-                        </div>
-
-                        <div className="flex items-start space-x-4 glass-panel p-6 rounded-2xl neon-box">
-                            <div className="bg-[var(--brand-yellow)]/10 p-4 rounded-lg">
-                                <MapPin size={24} className="text-[var(--brand-orange)]" />
-                            </div>
-                            <div>
-                                <h3 className="text-xl font-bold mb-2 text-slate-800">Visítanos</h3>
-                                <p className="text-slate-600">Av. Bolivia N° 148 - Int. 3095, Lima, Peru</p>
-                            </div>
-                        </div>
+            <div className="container-fluid grid grid-cols-1 lg:grid-cols-2 gap-20">
+                {/* Info */}
+                <div className="space-y-12">
+                    <div className="group">
+                        <h3 className="text-sm font-bold uppercase tracking-widest text-black/40 mb-2">Teléfono</h3>
+                        <p className="text-3xl font-black group-hover:text-[var(--signal-pink)] transition-colors">+51 976 277 993</p>
                     </div>
+                    <div className="group">
+                        <h3 className="text-sm font-bold uppercase tracking-widest text-black/40 mb-2">Email</h3>
+                        <p className="text-3xl font-black group-hover:text-[var(--signal-pink)] transition-colors">contacto@publizhen.com</p>
+                        <p className="text-xl font-bold text-black/60">ventas@publizhen.com</p>
+                    </div>
+                    <div className="group">
+                        <h3 className="text-sm font-bold uppercase tracking-widest text-black/40 mb-2">Ubicación</h3>
+                        <p className="text-2xl font-bold leading-relaxed max-w-md">
+                            Av. Bolivia N° 148 - Int. 3095<br />
+                            Lima, Peru
+                        </p>
+                    </div>
+                </div>
 
-                    {/* Contact Form */}
-                    <form className="glass-panel p-8 rounded-3xl border border-white/50 space-y-6 neon-box">
+                {/* Form */}
+                <form className="bg-white p-12 border border-black/10 shadow-[20px_20px_0px_0px_rgba(0,0,0,1)]">
+                    <div className="space-y-8">
                         <div>
-                            <label className="block text-sm font-medium text-slate-600 mb-2">Nombre Completo</label>
-                            <input type="text" className="w-full bg-white/50 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 focus:outline-none focus:border-[var(--brand-pink)] focus:shadow-[0_0_10px_rgba(242,39,93,0.2)] transition-all" placeholder="Juan Pérez" />
+                            <label className="block text-sm font-bold uppercase tracking-widest mb-2">Nombre</label>
+                            <input type="text" className="w-full bg-transparent border-b-2 border-black/20 py-4 text-xl font-bold focus:outline-none focus:border-[var(--signal-pink)] transition-colors" placeholder="Tu nombre" />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-slate-600 mb-2">Correo Electrónico</label>
-                            <input type="email" className="w-full bg-white/50 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 focus:outline-none focus:border-[var(--brand-pink)] focus:shadow-[0_0_10px_rgba(242,39,93,0.2)] transition-all" placeholder="juan@empresa.com" />
+                            <label className="block text-sm font-bold uppercase tracking-widest mb-2">Email</label>
+                            <input type="email" className="w-full bg-transparent border-b-2 border-black/20 py-4 text-xl font-bold focus:outline-none focus:border-[var(--signal-pink)] transition-colors" placeholder="tu@email.com" />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-slate-600 mb-2">Mensaje</label>
-                            <textarea className="w-full bg-white/50 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 focus:outline-none focus:border-[var(--brand-pink)] focus:shadow-[0_0_10px_rgba(242,39,93,0.2)] transition-all h-32" placeholder="Cuéntanos sobre tu proyecto..."></textarea>
+                            <label className="block text-sm font-bold uppercase tracking-widest mb-2">Mensaje</label>
+                            <textarea className="w-full bg-transparent border-b-2 border-black/20 py-4 text-xl font-bold focus:outline-none focus:border-[var(--signal-pink)] transition-colors h-32 resize-none" placeholder="Cuéntanos sobre tu proyecto..."></textarea>
                         </div>
-                        <button type="submit" className="w-full btn btn-primary py-4 text-lg">
+                        <button type="submit" className="btn-signal w-full text-lg py-6">
                             Enviar Mensaje <Send size={20} className="ml-2" />
                         </button>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
     );

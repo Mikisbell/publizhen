@@ -3,62 +3,130 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
     return (
-        <div className="animate-fade-in">
-            {/* Hero Section */}
-            <section className="relative h-screen flex items-center justify-center overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-[var(--brand-pink)]/10 to-[var(--brand-orange)]/10 z-0" />
-                {/* Placeholder background - replace with actual high-quality image later */}
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1562577309-4932fdd64cd1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-5 z-[-1]" />
+        <div className="pt-20">
+            {/* Hero Section - Brutalist */}
+            <section className="min-h-[90vh] flex flex-col justify-center relative border-b border-black/10 overflow-hidden">
+                {/* Background Image */}
+                <div className="absolute inset-0 z-0">
+                    <img src="/images/hero.png" alt="Taller de Impresión" className="w-full h-full object-cover opacity-20" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--canvas)] via-transparent to-transparent" />
+                </div>
 
-                <div className="container mx-auto px-4 relative z-10 text-center">
-                    <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[var(--brand-pink)] to-[var(--brand-orange)] drop-shadow-sm">
-                        Impacto Visual <br /> que Trasciende
-                    </h1>
-                    <p className="text-xl md:text-2xl text-slate-600 mb-8 max-w-3xl mx-auto font-medium">
-                        Soluciones innovadoras en publicidad, diseño y producción gráfica para marcas que buscan destacar.
-                    </p>
-                    <div className="flex flex-col md:flex-row justify-center gap-4">
-                        <Link to="/productos" className="btn btn-primary text-lg px-8 py-4">
-                            Ver Productos <ArrowRight className="ml-2" />
+                <div className="container-fluid grid grid-cols-1 lg:grid-cols-12 gap-8 items-end pb-20 relative z-10">
+                    <div className="lg:col-span-9">
+                        <h1 className="text-[12vw] leading-[0.85] font-black tracking-tighter uppercase mb-8">
+                            Impacto <br />
+                            <span className="text-stroke">Visual</span> <br />
+                            <span className="text-[var(--signal-pink)]">Total.</span>
+                        </h1>
+                    </div>
+                    <div className="lg:col-span-3 flex flex-col justify-end h-full pb-4">
+                        <p className="text-lg font-medium leading-relaxed mb-8 border-l-2 border-[var(--signal-orange)] pl-6">
+                            Soluciones de producción gráfica y publicidad para marcas que no piden permiso.
+                        </p>
+                        <div className="flex flex-col gap-4">
+                            <Link to="/productos" className="btn-industrial w-full group bg-white/80 backdrop-blur-sm">
+                                Ver Catálogo <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform" />
+                            </Link>
+                            <Link to="/contacto" className="btn-signal w-full">
+                                Iniciar Proyecto
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Decorative Ticker */}
+                <div className="absolute bottom-0 w-full overflow-hidden border-t border-black/10 py-4 bg-white/90 backdrop-blur-md z-20">
+                    <div className="whitespace-nowrap animate-marquee flex gap-12">
+                        {[...Array(10)].map((_, i) => (
+                            <span key={i} className="text-sm font-bold uppercase tracking-widest text-black/40">
+                                Gigantografías • Branding • Displays • Señalética • BTL •
+                            </span>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Services Section - Editorial Grid */}
+            <section className="py-0">
+                <div className="grid grid-cols-1 md:grid-cols-3">
+                    {/* Service 1 */}
+                    <div className="group border-r border-b border-black/10 p-12 min-h-[600px] flex flex-col justify-between hover:text-white transition-colors relative overflow-hidden">
+                        <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <img src="/images/service-print.png" alt="Gran Formato" className="w-full h-full object-cover" />
+                            <div className="absolute inset-0 bg-black/60" />
+                        </div>
+
+                        <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity z-10">
+                            <Printer size={120} className="text-[var(--signal-pink)]" />
+                        </div>
+                        <div className="relative z-10">
+                            <span className="text-6xl font-black text-black/10 group-hover:text-[var(--signal-pink)] transition-colors">01</span>
+                            <h3 className="text-3xl font-black uppercase mt-8 mb-4">Gran Formato</h3>
+                            <p className="text-black/60 group-hover:text-white/80 font-medium leading-relaxed transition-colors">
+                                Impresión de alta resolución para cuando el tamaño sí importa. Lonas, vinilos y estructuras gigantes.
+                            </p>
+                        </div>
+                        <Link to="/servicios" className="relative z-10 mt-8 text-sm font-bold uppercase tracking-widest flex items-center group-hover:text-[var(--signal-pink)] transition-colors">
+                            Explorar <ArrowRight size={16} className="ml-2" />
                         </Link>
-                        <Link to="/contacto" className="px-8 py-4 rounded-full border-2 border-slate-300 text-slate-700 hover:border-[var(--brand-pink)] hover:text-[var(--brand-pink)] transition-colors font-bold uppercase tracking-wider text-sm flex items-center justify-center">
-                            Cotizar Proyecto
+                    </div>
+
+                    {/* Service 2 */}
+                    <div className="group border-r border-b border-black/10 p-12 min-h-[600px] flex flex-col justify-between hover:text-white transition-colors relative overflow-hidden">
+                        <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <img src="/images/product-rollup.png" alt="Displays" className="w-full h-full object-cover" />
+                            <div className="absolute inset-0 bg-black/60" />
+                        </div>
+
+                        <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity z-10">
+                            <LayoutIcon size={120} className="text-[var(--signal-orange)]" />
+                        </div>
+                        <div className="relative z-10">
+                            <span className="text-6xl font-black text-black/10 group-hover:text-[var(--signal-orange)] transition-colors">02</span>
+                            <h3 className="text-3xl font-black uppercase mt-8 mb-4">Displays & BTL</h3>
+                            <p className="text-black/60 group-hover:text-white/80 font-medium leading-relaxed transition-colors">
+                                Estructuras portátiles y módulos de atención que detienen el tráfico en cualquier evento.
+                            </p>
+                        </div>
+                        <Link to="/productos" className="relative z-10 mt-8 text-sm font-bold uppercase tracking-widest flex items-center group-hover:text-[var(--signal-orange)] transition-colors">
+                            Ver Productos <ArrowRight size={16} className="ml-2" />
+                        </Link>
+                    </div>
+
+                    {/* Service 3 */}
+                    <div className="group border-b border-black/10 p-12 min-h-[600px] flex flex-col justify-between hover:text-white transition-colors relative overflow-hidden">
+                        <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <img src="/images/service-design.png" alt="Branding" className="w-full h-full object-cover" />
+                            <div className="absolute inset-0 bg-black/60" />
+                        </div>
+
+                        <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity z-10">
+                            <PenTool size={120} className="text-[var(--signal-yellow)]" />
+                        </div>
+                        <div className="relative z-10">
+                            <span className="text-6xl font-black text-black/10 group-hover:text-[var(--signal-yellow)] transition-colors">03</span>
+                            <h3 className="text-3xl font-black uppercase mt-8 mb-4">Branding</h3>
+                            <p className="text-black/60 group-hover:text-white/80 font-medium leading-relaxed transition-colors">
+                                Identidad visual que se queda en la mente. Desde el logo hasta la implementación física.
+                            </p>
+                        </div>
+                        <Link to="/branding" className="relative z-10 mt-8 text-sm font-bold uppercase tracking-widest flex items-center group-hover:text-[var(--signal-yellow)] transition-colors">
+                            Portafolio <ArrowRight size={16} className="ml-2" />
                         </Link>
                     </div>
                 </div>
             </section>
 
-            {/* Services Preview */}
-            <section className="section relative">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--brand-yellow)_0%,_transparent_70%)] opacity-10 pointer-events-none"></div>
-                <div className="container mx-auto px-4">
-                    <h2 className="text-4xl md:text-6xl font-bold text-center mb-20 neon-text">Nuestras Especialidades</h2>
-                    <div className="bento-grid">
-                        <div className="glass-panel p-10 bento-card neon-box group">
-                            <Printer size={64} className="text-[var(--brand-pink)] mb-8 group-hover:scale-110 transition-transform duration-300" />
-                            <h3 className="text-3xl font-bold mb-4 text-slate-800">Impresión Gran Formato</h3>
-                            <p className="text-slate-600 mb-8 leading-relaxed">Gigantografías, banners, vinilos y todo lo necesario para campañas de alto impacto visual.</p>
-                            <Link to="/servicios" className="text-[var(--brand-pink)] hover:text-[var(--brand-magenta)] font-bold flex items-center tracking-wider">
-                                SABER MÁS <ArrowRight size={20} className="ml-2 group-hover:translate-x-2 transition-transform" />
-                            </Link>
-                        </div>
-                        <div className="glass-panel p-10 bento-card neon-box group">
-                            <LayoutIcon size={64} className="text-[var(--brand-orange)] mb-8 group-hover:scale-110 transition-transform duration-300" />
-                            <h3 className="text-3xl font-bold mb-4 text-slate-800">Displays & BTL</h3>
-                            <p className="text-slate-600 mb-8 leading-relaxed">Rollscreens, módulos, ruletas y juegos publicitarios para activar tu marca en cualquier evento.</p>
-                            <Link to="/productos" className="text-[var(--brand-orange)] hover:text-[var(--brand-pink)] font-bold flex items-center tracking-wider">
-                                VER CATÁLOGO <ArrowRight size={20} className="ml-2 group-hover:translate-x-2 transition-transform" />
-                            </Link>
-                        </div>
-                        <div className="glass-panel p-10 bento-card neon-box group">
-                            <PenTool size={64} className="text-[var(--brand-yellow)] mb-8 group-hover:scale-110 transition-transform duration-300" />
-                            <h3 className="text-3xl font-bold mb-4 text-slate-800">Branding & Diseño</h3>
-                            <p className="text-slate-600 mb-8 leading-relaxed">Creación de identidad corporativa, logos y líneas gráficas que conectan con tu audiencia.</p>
-                            <Link to="/branding" className="text-[var(--brand-yellow)] hover:text-[var(--brand-orange)] font-bold flex items-center tracking-wider">
-                                VER PORTAFOLIO <ArrowRight size={20} className="ml-2 group-hover:translate-x-2 transition-transform" />
-                            </Link>
-                        </div>
-                    </div>
+            {/* CTA Section */}
+            <section className="py-32 border-b border-black/10 bg-black text-white">
+                <div className="container-fluid text-center">
+                    <h2 className="text-5xl md:text-8xl font-black uppercase mb-12 tracking-tighter">
+                        ¿Tienes un <span className="text-[var(--signal-pink)]">proyecto?</span>
+                    </h2>
+                    <Link to="/contacto" className="btn-signal text-xl px-16 py-8 hover:bg-white hover:text-black">
+                        Hablemos Ahora
+                    </Link>
                 </div>
             </section>
         </div>

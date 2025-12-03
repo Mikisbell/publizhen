@@ -1,178 +1,84 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@layer base {
-  :root {
-    /* User Defined Palette */
-    --brand-pink: #F2275D;
-    --brand-magenta: #D9298A;
-    --brand-yellow: #F2A71B;
-    --brand-orange: #F26E22;
-    --brand-bg: #F2F2F2;
+@theme {
+  /* Industrial Pop Palette */
+  --color-canvas: #F2F2F2;
+  --color-ink: #1a1a1a;
 
-    /* Theme Mapping (Light Mode) */
-    --bg-main: var(--brand-bg);
-    --surface-main: #ffffff;
+  --color-signal-pink: #F2275D;
+  --color-signal-orange: #F26E22;
+  --color-signal-yellow: #F2A71B;
+  --color-signal-magenta: #D9298A;
 
-    --primary: var(--brand-pink);
-    --secondary: var(--brand-orange);
-    --accent: var(--brand-yellow);
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 
-    --text-main: #1e293b;
-    /* Slate 800 for high contrast */
-    --text-muted: #64748b;
-    /* Slate 500 */
+  --text-display: 12vw;
+  --text-h1: 4rem;
+  --text-h2: 2.5rem;
+}
 
-    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-
-    /* Glassmorphism (Light) */
-    --glass-bg: rgba(255, 255, 255, 0.7);
-    --glass-border: rgba(255, 255, 255, 0.5);
-    --glass-blur: 12px;
-    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+/* Custom Utilities Layer */
+@layer utilities {
+  .text-stroke {
+    -webkit-text-stroke: 1px var(--color-ink);
+    color: transparent;
   }
 
+  .text-stroke-white {
+    -webkit-text-stroke: 1px white;
+    color: transparent;
+  }
+}
+
+/* Base Styles */
+@layer base {
   body {
     font-family: var(--font-sans);
-    background-color: var(--bg-main);
-    color: var(--text-main);
-    line-height: 1.6;
-    overflow-x: hidden;
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
   }
 
-  /* Futuristic Scrollbar (Vibrant) */
+  ::selection {
+    background-color: var(--color-signal-pink);
+    color: white;
+  }
+
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 12px;
   }
 
   ::-webkit-scrollbar-track {
-    background: var(--bg-main);
+    background: var(--color-canvas);
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #cbd5e1;
-    border-radius: 4px;
+    background: var(--color-ink);
+    border: 2px solid var(--color-canvas);
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--brand-pink);
+    background: var(--color-signal-pink);
   }
 }
 
+/* Component Styles */
 @layer components {
-  .container {
-    max-width: 1400px;
+  .container-fluid {
+    width: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    max-width: 1920px;
     margin: 0 auto;
-    padding: 0 2rem;
   }
 
-  /* Glassmorphism Utility (Light) */
-  .glass-panel {
-    background: var(--glass-bg);
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
-    border: 1px solid var(--glass-border);
-    box-shadow: var(--glass-shadow);
+  .btn-industrial {
+    @apply inline-flex items-center justify-center px-8 py-4 text-sm font-bold uppercase tracking-widest transition-all duration-300 border border-black bg-transparent text-black hover:bg-black hover:text-white;
   }
 
-  /* Neon/Vibrant Glow Utility */
-  .neon-text {
-    /* Less glow, more gradient/vibrant text for light mode */
-    background: linear-gradient(to right, var(--brand-pink), var(--brand-orange));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    font-weight: 800;
-  }
-
-  .neon-box {
-    box-shadow: 0 4px 20px rgba(242, 39, 93, 0.15);
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-  }
-
-  .neon-box:hover {
-    box-shadow: 0 10px 30px rgba(242, 39, 93, 0.25);
-    border-color: var(--brand-pink);
-    transform: translateY(-5px);
-  }
-
-  /* Bento Grid Utilities */
-  .bento-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .bento-card {
-    border-radius: 1.5rem;
-    overflow: hidden;
-  }
-
-  /* Button Styles */
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem 2rem;
-    border-radius: 9999px;
-    font-weight: 600;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-size: 0.9rem;
-  }
-
-  .btn-primary {
-    background: linear-gradient(135deg, var(--brand-pink), var(--brand-magenta));
-    color: white;
-    box-shadow: 0 4px 15px rgba(242, 39, 93, 0.4);
-  }
-
-  .btn-primary:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 8px 25px rgba(242, 39, 93, 0.6);
-  }
-
-  .section {
-    padding: 6rem 0;
-  }
-}
-
-@layer utilities {
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-
-  .animate-fade-in {
-    animation: fadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-  }
-}
-
-/* Animations */
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
-
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .btn-signal {
+    @apply inline-flex items-center justify-center px-8 py-4 text-sm font-bold uppercase tracking-widest transition-all duration-300 bg-[var(--color-signal-pink)] text-white hover:bg-black;
   }
 }
