@@ -1,11 +1,67 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import FlyoutLink from './FlyoutLink';
+import { ProductsContent, ServicesContent, BrandingContent } from './MenuContent';
+import { menuData } from '../data/menuData';
+
+const MobileAccordion = ({ title, items, isOpen, onToggle }: { title: string, items: any[], isOpen: boolean, onToggle: () => void }) => {
+    return (
+        <div className="w-full">
+            <button
+                onClick={onToggle}
+                className="w-full flex items-center justify-between text-3xl font-black uppercase tracking-tighter text-white py-2"
+            >
+                {title}
+                <motion.div
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
+                >
+                    <ChevronDown size={24} />
+                </motion.div>
+            </button>
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden"
+                    >
+                        <div className="pl-4 pb-4 space-y-4">
+                            {items.map((section: any, idx: number) => (
+                                <div key={idx} className="space-y-2">
+                                    {section.category && (
+                                        <h4 className="text-[var(--color-signal-pink)] text-sm font-bold uppercase tracking-widest mt-4 mb-2">
+                                            {section.category}
+                                        </h4>
+                                    )}
+                                    {section.items.map((item: any) => (
+                                        <Link
+                                            key={item.name}
+                                            to={item.path}
+                                            className="block text-white/80 text-lg font-medium hover:text-white transition-colors"
+                                        >
+                                            {item.name}
+                                        </Link>
+                                    ))}
+                                </div>
+                            ))}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </div>
+    );
+};
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const location = useLocation();
     const [scrolled, setScrolled] = useState(false);
+    const [openAccordion, setOpenAccordion] = useState<string | null>(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -15,61 +71,141 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const navLinks = [
-        { path: '/', label: 'Inicio' },
-        { path: '/productos', label: 'Productos' },
-        { path: '/servicios', label: 'Servicios' },
-        { path: '/branding', label: 'Branding' },
-    ];
+    // Prevent scrolling when mobile menu is open
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+    }, [isOpen]);
+
+    const menuVariants = {
+        closed: {
+            opacity: 0,
+            x: "100%",
+            transition: {
+                type: "spring",
+                stiffness: 400,
+                damping: 40
+            }
+        },
+        open: {
+            opacity: 1,
+            x: 0,
+            transition: {
+                type: "spring",
+                stiffness: 400,
+                damping: 40,
+                staggerChildren: 0.1,
+                delayChildren: 0.2
+            }
+        }
+    } as any;
+
+    const linkVariants = {
+        closed: { x: 50, opacity: 0 },
+        open: { x: 0, opacity: 1 }
+    };
+
+    const toggleAccordion = (title: string) => {
+        setOpenAccordion(openAccordion === title ? null : title);
+    };
 
     return (
-        <nav className={`fixed w-full z-50 transition-all duration-300 border-b border-black/5 ${scrolled ? 'bg-[var(--canvas)]/90 backdrop-blur-sm py-4' : 'bg-transparent py-6'}`}>
+        <nav className={`fixed w-full z-50 transition-all duration-500 border-b border-white/5 ${scrolled ? 'bg-black/80 backdrop-blur-md py-4' : 'bg-transparent py-6'}`}>
             <div className="container-fluid flex justify-between items-center">
-                <Link to="/" className="text-2xl font-black tracking-tighter uppercase">
-                    Publi<span className="text-[var(--signal-pink)]">zhen</span>.
+                <Link to="/" className="text-2xl font-black tracking-tighter uppercase relative z-50 mix-blend-difference text-white">
+                    Publi<span className="text-[var(--color-signal-pink)]">zhen</span>.
                 </Link>
 
                 {/* Desktop Menu */}
-                <div className="hidden md:flex items-center gap-12">
-                    {navLinks.map((link) => (
-                        <Link
-                            key={link.path}
-                            to={link.path}
-                            className={`text-sm font-bold uppercase tracking-widest hover:text-[var(--signal-orange)] transition-colors relative group ${location.pathname === link.path ? 'text-black' : 'text-black/60'}`}
-                        >
-                            {link.label}
-                            <span className={`absolute -bottom-2 left-0 w-full h-[2px] bg-[var(--signal-orange)] transform origin-left transition-transform duration-300 ${location.pathname === link.path ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
-                        </Link>
-                    ))}
-                    <Link to="/contacto" className="btn-signal">
-                        Cotizar
+                <div className="hidden md:flex items-center gap-8">
+                    <Link
+                        to="/"
+                        className={`text-sm font-bold uppercase tracking-widest transition-colors hover:text-[var(--color-signal-pink)] ${location.pathname === '/' ? 'text-white' : 'text-white/80'}`}
+                    >
+                        Inicio
+                    </Link>
+
+                    <FlyoutLink href="/productos" FlyoutContent={ProductsContent}>
+                        Productos
+                    </FlyoutLink>
+
+                    <FlyoutLink href="/servicios" FlyoutContent={ServicesContent}>
+                        Servicios
+                    </FlyoutLink>
+
+                    <FlyoutLink href="/branding" FlyoutContent={BrandingContent}>
+                        Branding
+                    </FlyoutLink>
+
+                    <Link to="/contacto" className="btn-signal relative overflow-hidden group ml-4">
+                        <span className="relative z-10">Cotizar</span>
+                        <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
                     </Link>
                 </div>
 
                 {/* Mobile Menu Button */}
-                <button className="md:hidden text-black" onClick={() => setIsOpen(!isOpen)}>
+                <button
+                    className="md:hidden text-white relative z-50 p-2"
+                    onClick={() => setIsOpen(!isOpen)}
+                >
                     {isOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
             </div>
 
             {/* Mobile Menu */}
-            {isOpen && (
-                <div className="md:hidden fixed inset-0 bg-[var(--canvas)] z-40 flex flex-col items-center justify-center space-y-8">
-                    {navLinks.map((link) => (
-                        <Link
-                            key={link.path}
-                            to={link.path}
-                            className="text-3xl font-black uppercase tracking-tighter hover:text-[var(--signal-pink)] transition-colors"
-                            onClick={() => setIsOpen(false)}
-                        >
-                            {link.label}
-                        </Link>
-                    ))}
-                    <Link to="/contacto" className="btn-signal text-xl px-12 py-6" onClick={() => setIsOpen(false)}>
-                        Cotizar Proyecto
-                    </Link>
-                </div>
-            )}
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial="closed"
+                        animate="open"
+                        exit="closed"
+                        variants={menuVariants}
+                        className="md:hidden fixed inset-0 bg-black/95 backdrop-blur-xl z-40 flex flex-col px-6 pt-24 pb-8 overflow-y-auto"
+                    >
+                        <motion.div variants={linkVariants} className="w-full max-w-md mx-auto space-y-6">
+                            <Link
+                                to="/"
+                                className="block text-3xl font-black uppercase tracking-tighter text-white hover:text-[var(--color-signal-pink)] transition-colors"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                Inicio
+                            </Link>
+
+                            <MobileAccordion
+                                title="Productos"
+                                items={menuData.productos}
+                                isOpen={openAccordion === 'Productos'}
+                                onToggle={() => toggleAccordion('Productos')}
+                            />
+
+                            <MobileAccordion
+                                title="Servicios"
+                                items={menuData.servicios}
+                                isOpen={openAccordion === 'Servicios'}
+                                onToggle={() => toggleAccordion('Servicios')}
+                            />
+
+                            <MobileAccordion
+                                title="Branding"
+                                items={menuData.branding}
+                                isOpen={openAccordion === 'Branding'}
+                                onToggle={() => toggleAccordion('Branding')}
+                            />
+
+                            <Link
+                                to="/contacto"
+                                className="btn-signal text-xl w-full py-6 mt-8"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                Cotizar Proyecto
+                            </Link>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </nav>
     );
 };

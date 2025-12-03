@@ -1,4 +1,4 @@
-import { PenTool, Layers, Image } from 'lucide-react';
+import { PenTool, Layers } from 'lucide-react';
 
 const Branding = () => {
     return (

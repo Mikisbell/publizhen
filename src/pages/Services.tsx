@@ -1,4 +1,4 @@
-import { Printer, PenTool, Lightbulb, Image } from 'lucide-react';
+// Imports removed as they were unused
 
 const services = [
     {

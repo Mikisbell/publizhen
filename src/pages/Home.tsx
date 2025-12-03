@@ -1,5 +1,6 @@
 import { ArrowRight, Printer, PenTool, Layout as LayoutIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const Home = () => {
     return (
@@ -14,24 +15,35 @@ const Home = () => {
 
                 <div className="container-fluid grid grid-cols-1 lg:grid-cols-12 gap-8 items-end pb-20 relative z-10">
                     <div className="lg:col-span-9">
-                        <h1 className="text-[12vw] leading-[0.85] font-black tracking-tighter uppercase mb-8">
+                        <motion.h1
+                            initial={{ opacity: 0, y: 100 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            className="text-[12vw] leading-[0.85] font-black tracking-tighter uppercase mb-8"
+                        >
                             Impacto <br />
                             <span className="text-stroke">Visual</span> <br />
                             <span className="text-[var(--signal-pink)]">Total.</span>
-                        </h1>
+                        </motion.h1>
                     </div>
                     <div className="lg:col-span-3 flex flex-col justify-end h-full pb-4">
-                        <p className="text-lg font-medium leading-relaxed mb-8 border-l-2 border-[var(--signal-orange)] pl-6">
-                            Soluciones de producción gráfica y publicidad para marcas que no piden permiso.
-                        </p>
-                        <div className="flex flex-col gap-4">
-                            <Link to="/productos" className="btn-industrial w-full group bg-white/80 backdrop-blur-sm">
-                                Ver Catálogo <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform" />
-                            </Link>
-                            <Link to="/contacto" className="btn-signal w-full">
-                                Iniciar Proyecto
-                            </Link>
-                        </div>
+                        <motion.div
+                            initial={{ opacity: 0, x: 50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.5, duration: 0.8 }}
+                        >
+                            <p className="text-lg font-medium leading-relaxed mb-8 border-l-2 border-[var(--signal-orange)] pl-6">
+                                Soluciones de producción gráfica y publicidad para marcas que no piden permiso.
+                            </p>
+                            <div className="flex flex-col gap-4">
+                                <Link to="/productos" className="btn-industrial w-full group bg-white/80 backdrop-blur-sm">
+                                    Ver Catálogo <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform" />
+                                </Link>
+                                <Link to="/contacto" className="btn-signal w-full">
+                                    Iniciar Proyecto
+                                </Link>
+                            </div>
+                        </motion.div>
                     </div>
                 </div>
 
