@@ -31,21 +31,21 @@ const Services = () => {
     return (
         <div className="pt-24 pb-16 animate-fade-in">
             <div className="container mx-auto px-4">
-                <h1 className="text-4xl md:text-5xl font-bold text-center mb-4">Servicios Integrales</h1>
-                <p className="text-xl text-gray-400 text-center mb-16 max-w-2xl mx-auto">
+                <h1 className="text-4xl md:text-5xl font-bold text-center mb-4 neon-text">Servicios Integrales</h1>
+                <p className="text-xl text-slate-600 text-center mb-16 max-w-2xl mx-auto">
                     Soluciones completas de impresión y diseño para cubrir todas las necesidades de tu negocio.
                 </p>
 
                 <div className="space-y-12">
                     {services.map((service, index) => (
                         <div key={index} className={`flex flex-col md:flex-row gap-8 items-center ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
-                            <div className="flex-1 bg-slate-900 p-8 rounded-2xl border border-slate-800 w-full">
-                                <div className="text-blue-500 mb-4">{service.icon}</div>
-                                <h2 className="text-3xl font-bold mb-4">{service.title}</h2>
-                                <p className="text-gray-400 mb-6 text-lg">{service.description}</p>
+                            <div className="flex-1 glass-panel p-8 rounded-3xl w-full neon-box hover:border-[var(--brand-pink)] transition-colors">
+                                <div className="text-[var(--brand-pink)] mb-4 drop-shadow-sm">{service.icon}</div>
+                                <h2 className="text-3xl font-bold mb-4 text-slate-800">{service.title}</h2>
+                                <p className="text-slate-600 mb-6 text-lg">{service.description}</p>
                                 <div className="flex flex-wrap gap-2">
                                     {service.items.map((item, idx) => (
-                                        <span key={idx} className="px-3 py-1 bg-slate-800 rounded-full text-sm text-blue-200 border border-slate-700">
+                                        <span key={idx} className="px-3 py-1 bg-white/50 rounded-full text-sm text-slate-700 border border-slate-200 hover:border-[var(--brand-pink)] transition-colors">
                                             {item}
                                         </span>
                                     ))}
@@ -53,10 +53,10 @@ const Services = () => {
                             </div>
                             <div className="flex-1">
                                 {/* Placeholder for service image */}
-                                <div className="aspect-video bg-slate-800 rounded-2xl overflow-hidden relative group">
-                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60"></div>
+                                <div className="aspect-video glass-panel rounded-3xl overflow-hidden relative group neon-box">
+                                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-bg)] to-transparent opacity-80"></div>
                                     <div className="absolute bottom-0 left-0 p-6">
-                                        <span className="text-5xl font-bold text-white/10">{String(index + 1).padStart(2, '0')}</span>
+                                        <span className="text-5xl font-bold text-slate-900/10">{String(index + 1).padStart(2, '0')}</span>
                                     </div>
                                 </div>
                             </div>
