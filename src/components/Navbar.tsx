@@ -160,8 +160,11 @@ const Navbar = () => {
                         Contacto
                     </Link>
 
-                    <a href="https://wa.me/51976277993" target="_blank" rel="noopener noreferrer" className="btn-signal relative overflow-hidden group ml-4">
-                        <span className="relative z-10">Cotizar</span>
+                    <a href="https://wa.me/51976277993?text=Hola,%20me%20gustar%C3%ADa%20cotizar%20un%20proyecto." target="_blank" rel="noopener noreferrer" className="btn-signal relative overflow-hidden group ml-4 flex items-center gap-2">
+                        <span className="relative z-10 flex items-center gap-2">
+                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" className="text-white"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" /><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" /></svg>
+                            Cotizar
+                        </span>
                         <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
                     </a>
                 </div>
@@ -224,12 +227,13 @@ const Navbar = () => {
                             </Link>
 
                             <a
-                                href="https://wa.me/51976277993"
+                                href="https://wa.me/51976277993?text=Hola,%20me%20gustar%C3%ADa%20cotizar%20un%20proyecto."
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="btn-signal text-xl w-full py-6 mt-8 flex justify-center"
+                                className="btn-signal text-xl w-full py-6 mt-8 flex justify-center items-center gap-3"
                                 onClick={() => setIsOpen(false)}
                             >
+                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" className="text-white"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" /><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" /></svg>
                                 Cotizar Proyecto
                             </a>
                         </div>
