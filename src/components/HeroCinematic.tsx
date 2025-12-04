@@ -97,7 +97,7 @@ const HeroCinematic = () => {
                         transition={{ duration: 0.8, delay: 0.6 }}
                         className="flex flex-col sm:flex-row gap-6"
                     >
-                        <a href="https://wa.me/51976277993?text=Hola,%20me%20gustar%C3%ADa%20cotizar%20un%20proyecto." target="_blank" rel="noopener noreferrer" className="btn-signal text-lg px-12 py-6 group flex items-center gap-3">
+                        <a href="https://wa.me/51976277993?text=Hola,%20me%20gustar%C3%ADa%20cotizar%20un%20proyecto." target="_blank" rel="noopener noreferrer" className="btn-signal text-lg px-12 py-6 group flex items-center gap-3 !bg-[#25D366] hover:!bg-black">
                             <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" className="text-white"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" /><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" /></svg>
                             Iniciar Proyecto
                             <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform" />
