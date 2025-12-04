@@ -88,7 +88,10 @@ function ParallaxText({ children, baseVelocity = 100 }: { children: any; baseVel
     const x = useTransform(baseX, (v) => `${wrap(-20, -45, v)}%`);
 
     const directionFactor = useRef<number>(1);
+    const isDragging = useRef(false);
     useAnimationFrame((_, delta) => {
+        if (isDragging.current) return;
+
         let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
 
         if (velocityFactor.get() < 0) {
@@ -104,7 +107,17 @@ function ParallaxText({ children, baseVelocity = 100 }: { children: any; baseVel
 
     return (
         <div className="overflow-hidden m-0 flex flex-nowrap whitespace-nowrap">
-            <motion.div className="scroller flex flex-nowrap gap-8" style={{ x }}>
+            <motion.div
+                className="scroller flex flex-nowrap gap-8 cursor-grab active:cursor-grabbing"
+                style={{ x }}
+                onPanStart={() => isDragging.current = true}
+                onPanEnd={() => isDragging.current = false}
+                onPan={(_, info) => {
+                    // Convert pixel delta to percentage-like units for the wrap function
+                    // Adjust sensitivity (0.05) as needed
+                    baseX.set(baseX.get() + info.delta.x * 0.05);
+                }}
+            >
                 {children}
                 {children}
                 {children}
@@ -155,7 +168,7 @@ const PremiumClients = () => {
             </div>
 
             <div className="relative z-10 -rotate-1 scale-110">
-                <ParallaxText baseVelocity={-2}>
+                <ParallaxText baseVelocity={-1.4}>
                     {clients.map((client, index) => (
                         <Card key={index} client={client} mouseX={mouseX} mouseY={mouseY} />
                     ))}
@@ -163,7 +176,7 @@ const PremiumClients = () => {
             </div>
 
             <div className="mt-12 relative z-10 rotate-1 scale-110 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-                <ParallaxText baseVelocity={2}>
+                <ParallaxText baseVelocity={1.4}>
                     {clients.reverse().map((client, index) => (
                         <Card key={index} client={client} mouseX={mouseX} mouseY={mouseY} />
                     ))}
