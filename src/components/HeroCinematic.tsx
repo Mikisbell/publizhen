@@ -18,11 +18,6 @@ const HeroCinematic = () => {
                     muted
                     playsInline
                     className="absolute inset-0 w-full h-full object-cover z-0"
-                    onLoadedMetadata={() => {
-                        if (videoRef.current) {
-                            videoRef.current.playbackRate = 0.2; // 20% speed (Super Slow Motion)
-                        }
-                    }}
                     onEnded={() => {
                         if (videoRef.current) videoRef.current.pause();
                         setIsVideoEnded(true);
