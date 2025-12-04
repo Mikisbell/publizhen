@@ -16,7 +16,7 @@ const HeroCinematic = () => {
                     className="absolute inset-0 w-full h-full object-cover z-0"
                     poster="/images/hero-printer.webp"
                 >
-                    <source src="/videos/hero-background.mp4" type="video/mp4" />
+                    <source src="/images/Video.mp4" type="video/mp4" />
                     {/* Fallback to Cinematic Motion if video fails/missing */}
                 </video>
 
