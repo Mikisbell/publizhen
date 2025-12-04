@@ -1,5 +1,6 @@
 import ManifestoSection from '../components/ManifestoSection';
 import { ScrollReveal } from '../components/ScrollReveal';
+import SEO from '../components/SEO';
 
 const services = [
     {
@@ -42,6 +43,12 @@ const services = [
 const Services = () => {
     return (
         <div className="pt-0 pb-20 min-h-screen">
+            <SEO
+                title="Servicios de Impresión y Branding"
+                description="Soluciones integrales en Gran Formato, Señalética Industrial, Merchandising y Diseño de Identidad Corporativa. Calidad premium para tu marca."
+                keywords="Gran Formato, Señalética Industrial, Branding, Merchandising, Impresión UV, Gigantografías Lima, Instalación Publicitaria"
+                url="/servicios"
+            />
             <ManifestoSection />
 
             <div className="container-fluid mb-20 mt-20">

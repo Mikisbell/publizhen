@@ -1,8 +1,15 @@
 import { Send } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const Contact = () => {
     return (
         <div className="pt-32 pb-20 min-h-screen">
+            <SEO
+                title="Contacto - Cotiza tu Proyecto"
+                description="Contáctanos para cotizar tus proyectos de publicidad industrial, branding o BTL. Estamos ubicados en Lima, Perú."
+                keywords="Agencia de Publicidad Lima, Contacto Publizhen, Cotizar Gigantografías, Taller de Impresión, Imprenta Lima"
+                url="/contacto"
+            />
             <div className="container-fluid mb-20">
                 <h1 className="text-[8vw] leading-none font-black uppercase tracking-tighter mb-4">
                     Contacto <span className="text-[var(--signal-pink)]">.</span>

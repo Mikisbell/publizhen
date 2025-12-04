@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Package, Monitor, Gamepad2, Layers, ArrowUpRight, Sticker, Lightbulb } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import SEO from '../components/SEO';
 
 const categories = [
     {
@@ -64,6 +65,12 @@ const Products = () => {
 
     return (
         <div className="pt-32 pb-20 min-h-screen bg-[var(--color-canvas)] relative">
+            <SEO
+                title="Catálogo de Productos Publicitarios"
+                description="Displays, Roll Screens, Juegos BTL, Corpóreos 3D y Materiales de Impresión. Todo lo que necesitas para activar tu marca en el punto de venta."
+                keywords="Displays Publicitarios, Roll Screen, Módulos BTL, Juegos BTL, Ruletas Publicitarias, Corpóreos 3D, Materiales Publicitarios"
+                url="/productos"
+            />
             <div className="container-fluid mb-20 relative z-10">
                 <h1 className="text-[var(--text-display)] leading-none font-black uppercase tracking-tighter mb-4 mix-blend-multiply">
                     Catálogo <span className="text-[var(--color-signal-orange)]">.</span>

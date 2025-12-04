@@ -1,9 +1,16 @@
 import { PenTool, Layers } from 'lucide-react';
 import { ScrollReveal } from '../components/ScrollReveal';
+import SEO from '../components/SEO';
 
 const Branding = () => {
     return (
         <div className="pt-32 pb-20 min-h-screen">
+            <SEO
+                title="Agencia de Branding y Diseño Gráfico"
+                description="Creamos identidades visuales poderosas. Diseño de Logotipos, Manuales de Marca y Sistemas Visuales para empresas que buscan destacar."
+                keywords="Diseño de Logotipos, Identidad Corporativa, Manual de Marca, Diseño Gráfico Lima, Estrategia de Marca, Rebranding"
+                url="/branding"
+            />
             <div className="container-fluid mb-20">
                 <h1 className="text-[8vw] leading-none font-black uppercase tracking-tighter mb-4">
                     Identidad <span className="text-[var(--signal-yellow)]">.</span>

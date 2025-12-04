@@ -6,6 +6,8 @@ import TestimonialsSection from '../components/TestimonialsSection';
 import PortfolioSection from '../components/PortfolioSection';
 import { ScrollReveal } from '../components/ScrollReveal';
 
+import SEO from '../components/SEO';
+
 const Home = () => {
     const services = [
         {
@@ -27,6 +29,11 @@ const Home = () => {
 
     return (
         <div className="bg-[var(--color-canvas)]">
+            <SEO
+                title="Agencia de Publicidad Industrial y Branding"
+                description="Expertos en Gigantografías, Señalética Industrial, Branding Corporativo y Activaciones BTL en Lima, Perú. Transformamos tu marca con impacto visual."
+                keywords="Publicidad Industrial, Diseño Gráfico, Branding, Gigantografías, Señalética, BTL Lima, Merchandising"
+            />
             {/* Hero Section */}
             <HeroCinematic />
 
