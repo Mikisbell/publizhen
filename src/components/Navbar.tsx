@@ -130,7 +130,7 @@ const Navbar = () => {
                 <div className="hidden md:flex items-center gap-8">
                     <Link
                         to="/"
-                        className={`text-sm font-bold uppercase tracking-widest transition-colors hover:text-[var(--color-signal-pink)] ${location.pathname === '/' || scrolled || isOpen
+                        className={`text-sm font-bold uppercase tracking-widest transition-colors hover:text-[var(--color-signal-pink)] ${location.pathname === '/' || scrolled
                             ? 'text-white'
                             : 'text-black/80'
                             }`}
@@ -138,15 +138,15 @@ const Navbar = () => {
                         Inicio
                     </Link>
 
-                    <FlyoutLink href="/productos" FlyoutContent={ProductsContent} scrolled={scrolled}>
+                    <FlyoutLink href="/productos" FlyoutContent={ProductsContent} whiteText={location.pathname === '/' || scrolled}>
                         Productos
                     </FlyoutLink>
 
-                    <FlyoutLink href="/servicios" FlyoutContent={ServicesContent} scrolled={scrolled}>
+                    <FlyoutLink href="/servicios" FlyoutContent={ServicesContent} whiteText={location.pathname === '/' || scrolled}>
                         Servicios
                     </FlyoutLink>
 
-                    <FlyoutLink href="/branding" FlyoutContent={BrandingContent} scrolled={scrolled}>
+                    <FlyoutLink href="/branding" FlyoutContent={BrandingContent} whiteText={location.pathname === '/' || scrolled}>
                         Branding
                     </FlyoutLink>
 
