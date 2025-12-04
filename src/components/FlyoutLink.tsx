@@ -5,9 +5,10 @@ interface FlyoutLinkProps {
     children: React.ReactNode;
     href: string;
     FlyoutContent?: React.ComponentType;
+    scrolled?: boolean;
 }
 
-const FlyoutLink = ({ children, href, FlyoutContent }: FlyoutLinkProps) => {
+const FlyoutLink = ({ children, href, FlyoutContent, scrolled = false }: FlyoutLinkProps) => {
     const [open, setOpen] = useState(false);
 
     const showFlyout = FlyoutContent && open;
@@ -18,7 +19,7 @@ const FlyoutLink = ({ children, href, FlyoutContent }: FlyoutLinkProps) => {
             onMouseLeave={() => setOpen(false)}
             className="relative h-fit w-fit"
         >
-            <a href={href} className="relative text-white font-bold uppercase tracking-widest hover:text-[var(--color-signal-pink)] transition-colors">
+            <a href={href} className={`relative font-bold uppercase tracking-widest hover:text-[var(--color-signal-pink)] transition-colors ${scrolled ? 'text-white' : 'text-black'}`}>
                 {children}
                 <span
                     style={{

@@ -1,12 +1,26 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import FlyoutLink from './FlyoutLink';
 import { ProductsContent, ServicesContent, BrandingContent } from './MenuContent';
 import { menuData } from '../data/menuData';
 
-const MobileAccordion = ({ title, items, isOpen, onToggle }: { title: string, items: any[], isOpen: boolean, onToggle: () => void }) => {
+interface MenuItem {
+    name: string;
+    path: string;
+    description?: string;
+    icon?: React.ElementType;
+}
+
+interface MenuSection {
+    category?: string;
+    icon?: React.ElementType;
+    color?: string;
+    items: MenuItem[];
+}
+
+const MobileAccordion = ({ title, items, isOpen, onToggle }: { title: string, items: MenuSection[], isOpen: boolean, onToggle: () => void }) => {
     return (
         <div className="w-full">
             <button
@@ -31,14 +45,14 @@ const MobileAccordion = ({ title, items, isOpen, onToggle }: { title: string, it
                         className="overflow-hidden"
                     >
                         <div className="pl-4 pb-4 space-y-4">
-                            {items.map((section: any, idx: number) => (
+                            {items.map((section: MenuSection, idx: number) => (
                                 <div key={idx} className="space-y-2">
                                     {section.category && (
                                         <h4 className="text-[var(--color-signal-pink)] text-sm font-bold uppercase tracking-widest mt-4 mb-2">
                                             {section.category}
                                         </h4>
                                     )}
-                                    {section.items.map((item: any) => (
+                                    {section.items.map((item: MenuItem) => (
                                         <Link
                                             key={item.name}
                                             to={item.path}
@@ -80,32 +94,21 @@ const Navbar = () => {
         }
     }, [isOpen]);
 
-    const menuVariants = {
+    const menuVariants: Variants = {
         closed: {
             opacity: 0,
-            x: "100%",
             transition: {
-                type: "spring",
-                stiffness: 400,
-                damping: 40
+                duration: 0.2,
+                ease: "linear"
             }
         },
         open: {
             opacity: 1,
-            x: 0,
             transition: {
-                type: "spring",
-                stiffness: 400,
-                damping: 40,
-                staggerChildren: 0.1,
-                delayChildren: 0.2
+                duration: 0.2,
+                ease: "linear"
             }
         }
-    } as any;
-
-    const linkVariants = {
-        closed: { x: 50, opacity: 0 },
-        open: { x: 0, opacity: 1 }
     };
 
     const toggleAccordion = (title: string) => {
@@ -113,9 +116,9 @@ const Navbar = () => {
     };
 
     return (
-        <nav className={`fixed w-full z-50 transition-all duration-500 border-b border-white/5 ${scrolled ? 'bg-black/80 backdrop-blur-md py-4' : 'bg-transparent py-6'}`}>
+        <nav className={`fixed w-full z-50 border-b border-white/5 ${isOpen ? 'transition-none' : 'transition-all duration-500'} ${scrolled && !isOpen ? 'bg-black/80 backdrop-blur-md py-4' : 'bg-transparent py-6'}`}>
             <div className="container-fluid flex justify-between items-center">
-                <Link to="/" className="text-2xl font-black tracking-tighter uppercase relative z-50 mix-blend-difference text-white">
+                <Link to="/" className={`text-2xl font-black tracking-tighter uppercase relative z-50 transition-colors duration-300 ${isOpen || scrolled ? 'text-white' : 'text-black'}`}>
                     Publi<span className="text-[var(--color-signal-pink)]">zhen</span>.
                 </Link>
 
@@ -123,20 +126,23 @@ const Navbar = () => {
                 <div className="hidden md:flex items-center gap-8">
                     <Link
                         to="/"
-                        className={`text-sm font-bold uppercase tracking-widest transition-colors hover:text-[var(--color-signal-pink)] ${location.pathname === '/' ? 'text-white' : 'text-white/80'}`}
+                        className={`text-sm font-bold uppercase tracking-widest transition-colors hover:text-[var(--color-signal-pink)] ${location.pathname === '/'
+                            ? (scrolled ? 'text-white' : 'text-black')
+                            : (scrolled ? 'text-white/80' : 'text-black/80')
+                            }`}
                     >
                         Inicio
                     </Link>
 
-                    <FlyoutLink href="/productos" FlyoutContent={ProductsContent}>
+                    <FlyoutLink href="/productos" FlyoutContent={ProductsContent} scrolled={scrolled}>
                         Productos
                     </FlyoutLink>
 
-                    <FlyoutLink href="/servicios" FlyoutContent={ServicesContent}>
+                    <FlyoutLink href="/servicios" FlyoutContent={ServicesContent} scrolled={scrolled}>
                         Servicios
                     </FlyoutLink>
 
-                    <FlyoutLink href="/branding" FlyoutContent={BrandingContent}>
+                    <FlyoutLink href="/branding" FlyoutContent={BrandingContent} scrolled={scrolled}>
                         Branding
                     </FlyoutLink>
 
@@ -148,7 +154,7 @@ const Navbar = () => {
 
                 {/* Mobile Menu Button */}
                 <button
-                    className="md:hidden text-white relative z-50 p-2"
+                    className={`md:hidden relative z-50 p-2 transition-colors duration-300 ${isOpen || scrolled ? 'text-white' : 'text-black'}`}
                     onClick={() => setIsOpen(!isOpen)}
                 >
                     {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -165,7 +171,7 @@ const Navbar = () => {
                         variants={menuVariants}
                         className="md:hidden fixed inset-0 bg-black/95 backdrop-blur-xl z-40 flex flex-col px-6 pt-24 pb-8 overflow-y-auto"
                     >
-                        <motion.div variants={linkVariants} className="w-full max-w-md mx-auto space-y-6">
+                        <div className="w-full max-w-md mx-auto space-y-6">
                             <Link
                                 to="/"
                                 className="block text-3xl font-black uppercase tracking-tighter text-white hover:text-[var(--color-signal-pink)] transition-colors"
@@ -202,7 +208,7 @@ const Navbar = () => {
                             >
                                 Cotizar Proyecto
                             </Link>
-                        </motion.div>
+                        </div>
                     </motion.div>
                 )}
             </AnimatePresence>

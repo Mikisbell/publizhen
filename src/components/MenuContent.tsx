@@ -9,7 +9,7 @@ const fadeVariants = {
     exit: { opacity: 0, transition: { duration: 0.2 } }
 };
 
-const AnimatedIcon = ({ icon: Icon, color }: { icon: any, color: string }) => {
+const AnimatedIcon = ({ icon: Icon, color }: { icon: React.ElementType, color: string }) => {
     return (
         <motion.div
             whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
