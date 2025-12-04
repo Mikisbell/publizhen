@@ -115,6 +115,16 @@ const Navbar = () => {
         setOpenAccordion(openAccordion === title ? null : title);
     };
 
+    const NavLink = ({ to, children, whiteText }: { to: string, children: React.ReactNode, whiteText: boolean }) => (
+        <Link
+            to={to}
+            className={`relative text-sm font-bold uppercase tracking-widest transition-colors hover:text-[var(--color-signal-pink)] ${whiteText ? 'text-white' : 'text-black/80'} group`}
+        >
+            {children}
+            <span className="absolute -bottom-2 -left-2 -right-2 h-1 origin-left scale-x-0 rounded-full bg-[var(--color-signal-pink)] transition-transform duration-300 ease-out group-hover:scale-x-100" />
+        </Link>
+    );
+
     return (
         <nav className={`fixed w-full z-50 border-b border-white/5 ${isOpen ? 'transition-none' : 'transition-all duration-500'} ${scrolled && !isOpen ? 'bg-black/80 backdrop-blur-md py-4' : 'bg-transparent py-6'}`}>
             <div className="container-fluid flex justify-between items-center">
@@ -128,15 +138,9 @@ const Navbar = () => {
 
                 {/* Desktop Menu */}
                 <div className="hidden md:flex items-center gap-8">
-                    <Link
-                        to="/"
-                        className={`text-sm font-bold uppercase tracking-widest transition-colors hover:text-[var(--color-signal-pink)] ${location.pathname === '/' || scrolled
-                            ? 'text-white'
-                            : 'text-black/80'
-                            }`}
-                    >
+                    <NavLink to="/" whiteText={location.pathname === '/' || scrolled}>
                         Inicio
-                    </Link>
+                    </NavLink>
 
                     <FlyoutLink href="/productos" FlyoutContent={ProductsContent} whiteText={location.pathname === '/' || scrolled}>
                         Productos
@@ -150,17 +154,11 @@ const Navbar = () => {
                         Branding
                     </FlyoutLink>
 
-                    <Link
-                        to="/contacto"
-                        className={`text-sm font-bold uppercase tracking-widest transition-colors hover:text-[var(--color-signal-pink)] ${location.pathname === '/contacto' || scrolled
-                            ? 'text-white'
-                            : 'text-black/80'
-                            }`}
-                    >
+                    <NavLink to="/contacto" whiteText={location.pathname === '/contacto' || scrolled}>
                         Contacto
-                    </Link>
+                    </NavLink>
 
-                    <a href="https://wa.me/51976277993?text=Hola,%20me%20gustar%C3%ADa%20cotizar%20un%20proyecto." target="_blank" rel="noopener noreferrer" className="btn-signal relative overflow-hidden group ml-4 flex items-center gap-2 !bg-[#25D366] hover:!bg-black">
+                    <a href="https://wa.me/51976277993?text=Hola,%20me%20gustar%C3%ADa%20cotizar%20un%20proyecto." target="_blank" rel="noopener noreferrer" className="btn-signal relative overflow-hidden group ml-4 flex items-center gap-2 !bg-[#25D366] hover:!bg-black rounded-full">
                         <span className="relative z-10 flex items-center gap-2">
                             <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" className="text-white"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" /><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" /></svg>
                             Cotizar
@@ -230,7 +228,7 @@ const Navbar = () => {
                                 href="https://wa.me/51976277993?text=Hola,%20me%20gustar%C3%ADa%20cotizar%20un%20proyecto."
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="btn-signal text-xl w-full py-6 mt-8 flex justify-center items-center gap-3 !bg-[#25D366] hover:!bg-black"
+                                className="btn-signal text-xl w-full py-6 mt-8 flex justify-center items-center gap-3 !bg-[#25D366] hover:!bg-black rounded-full"
                                 onClick={() => setIsOpen(false)}
                             >
                                 <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" className="text-white"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" /><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" /></svg>
