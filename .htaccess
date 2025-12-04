@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Redirect root to dist/index.html
+    RewriteRule ^$ dist/index.html [L]
+    
+    # If the requested file/directory exists in root, serve it (e.g. .well-known)
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+    
+    # Otherwise, rewrite everything to dist/
+    RewriteCond %{REQUEST_URI} !^/dist/
+    RewriteRule ^(.*)$ dist/$1 [L]
+</IfModule>
