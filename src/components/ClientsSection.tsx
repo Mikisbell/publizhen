@@ -26,7 +26,7 @@ const ClientsSection = () => {
                 <div className="flex items-center gap-4">
                     <div className="w-3 h-3 bg-black"></div>
                     <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-black/60">
-                        Trusted By Industry Leaders
+                        Respaldado por los Líderes de la Industria
                     </h2>
                 </div>
             </div>
@@ -42,7 +42,7 @@ const ClientsSection = () => {
                     {[...clients, ...clients].map((client, index) => (
                         <div key={index} className="flex items-center">
                             {/* Client Card */}
-                            <div className="flex flex-col items-center justify-center w-[300px] md:w-[400px] px-8 border-r border-black/5 relative">
+                            <div className="flex flex-col items-center justify-center w-[300px] md:w-[400px] px-8 py-8 border-r border-black/5 relative transition-colors duration-300 hover:bg-black/5">
                                 {/* Technical Label */}
                                 <span className="text-xs font-bold uppercase tracking-widest text-black/40 mb-6">
                                     {client.name}
