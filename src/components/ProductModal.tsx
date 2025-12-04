@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Check } from 'lucide-react';
+import { useState } from 'react';
 
 interface ProductModalProps {
     isOpen: boolean;
@@ -8,7 +9,12 @@ interface ProductModalProps {
 }
 
 const ProductModal = ({ isOpen, onClose, product }: ProductModalProps) => {
+    const [hoveredItem, setHoveredItem] = useState<any>(null);
+
     if (!product) return null;
+
+    // Determine which image to show: Hovered Item Image -> Product Main Image
+    const activeImage = hoveredItem?.image || product.image;
 
     return (
         <AnimatePresence>
@@ -36,12 +42,19 @@ const ProductModal = ({ isOpen, onClose, product }: ProductModalProps) => {
                             </button>
 
                             {/* Image Side */}
-                            <div className="relative h-64 md:h-full bg-black/5">
-                                <img
-                                    src={product.image}
-                                    alt={product.title}
-                                    className="absolute inset-0 w-full h-full object-cover"
-                                />
+                            <div className="relative h-64 md:h-full bg-black/5 overflow-hidden">
+                                <AnimatePresence mode="wait">
+                                    <motion.img
+                                        key={activeImage}
+                                        src={activeImage}
+                                        alt={product.title}
+                                        initial={{ opacity: 0, scale: 1.1 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        exit={{ opacity: 0 }}
+                                        transition={{ duration: 0.4 }}
+                                        className="absolute inset-0 w-full h-full object-cover"
+                                    />
+                                </AnimatePresence>
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent md:hidden" />
                                 <div className="absolute bottom-4 left-4 text-white md:hidden">
                                     <h2 className="text-2xl font-black uppercase">{product.title}</h2>
@@ -62,10 +75,15 @@ const ProductModal = ({ isOpen, onClose, product }: ProductModalProps) => {
                                 <div className="space-y-4 mb-8">
                                     <h3 className="font-bold uppercase tracking-widest text-sm border-b border-black/10 pb-2">Especificaciones</h3>
                                     <ul className="space-y-3">
-                                        {product.items.map((item: string, idx: number) => (
-                                            <li key={idx} className="flex items-start text-sm font-medium text-black/70">
-                                                <Check size={16} className="text-[var(--signal-green)] mr-3 mt-0.5 flex-shrink-0" />
-                                                {item}
+                                        {product.items.map((item: any, idx: number) => (
+                                            <li
+                                                key={idx}
+                                                className="flex items-start text-sm font-medium text-black/70 cursor-pointer hover:text-[var(--signal-orange)] transition-colors group"
+                                                onMouseEnter={() => setHoveredItem(item)}
+                                                onMouseLeave={() => setHoveredItem(null)}
+                                            >
+                                                <Check size={16} className="text-[var(--signal-green)] mr-3 mt-0.5 flex-shrink-0 group-hover:scale-125 transition-transform" />
+                                                {item.name}
                                             </li>
                                         ))}
                                     </ul>

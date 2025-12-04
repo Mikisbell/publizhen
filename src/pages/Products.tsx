@@ -12,7 +12,14 @@ const categories = [
         subtitle: 'Insumos de Producción',
         icon: <Package size={32} />,
         color: 'var(--color-signal-pink)',
-        items: ['Láminas de PVC (Celtx)', 'Vinilos Adhesivos', 'Laminados Mate/Brillo', 'Lonas Front/Back', 'Banners', 'Papeles Especiales'],
+        items: [
+            { name: 'Láminas de PVC (Celtx)' },
+            { name: 'Vinilos Adhesivos' },
+            { name: 'Laminados Mate/Brillo' },
+            { name: 'Lonas Front/Back' },
+            { name: 'Banners' },
+            { name: 'Papeles Especiales' }
+        ],
         image: '/images/category-materiales.png'
     },
     {
@@ -21,7 +28,15 @@ const categories = [
         subtitle: 'Sistemas de Exhibición',
         icon: <Monitor size={32} />,
         color: 'var(--color-signal-orange)',
-        items: ['Rollscreen Aluminio', 'X-banner', 'Banners con Parante', 'Módulos PVC', 'Backing de Prensa', 'Pórticos Publicitarios', 'Tótems'],
+        items: [
+            { name: 'Rollscreen Aluminio' },
+            { name: 'X-banner' },
+            { name: 'Banners con Parante' },
+            { name: 'Módulos PVC' },
+            { name: 'Backing de Prensa' },
+            { name: 'Pórticos Publicitarios' },
+            { name: 'Tótems' }
+        ],
         image: '/images/category-displays.png'
     },
     {
@@ -30,7 +45,15 @@ const categories = [
         subtitle: 'Dinámicas de Activación',
         icon: <Gamepad2 size={32} />,
         color: 'var(--color-signal-yellow)',
-        items: ['Ruletas de Premio', 'Ánforas Acrílicas', 'Dados Gigantes', 'Marcos Selfie', 'Tiro al Blanco', 'Metegol MDF', 'Juegos de Memoria'],
+        items: [
+            { name: 'Ruletas de Premio' },
+            { name: 'Ánforas Acrílicas' },
+            { name: 'Dados Gigantes' },
+            { name: 'Marcos Selfie' },
+            { name: 'Tiro al Blanco' },
+            { name: 'Metegol MDF' },
+            { name: 'Juegos de Memoria' }
+        ],
         image: '/images/category-btl.png'
     },
     {
@@ -39,7 +62,13 @@ const categories = [
         subtitle: 'Volumetría y 3D',
         icon: <Layers size={32} />,
         color: 'var(--color-signal-magenta)',
-        items: ['Letras Block (MDF/PVC)', 'Logos Volumétricos', 'Dummys de Producto', 'Señalética 3D', 'Corpóreos Iluminados'],
+        items: [
+            { name: 'Letras Block (MDF/PVC)' },
+            { name: 'Logos Volumétricos' },
+            { name: 'Dummys de Producto' },
+            { name: 'Señalética 3D' },
+            { name: 'Corpóreos Iluminados' }
+        ],
         image: '/images/category-corporeos.png'
     },
     {
@@ -48,7 +77,16 @@ const categories = [
         subtitle: 'Identidad Corporativa',
         icon: <Sticker size={32} />,
         color: '#333',
-        items: ['Tarjetas Personales', 'Flyers y Volantes', 'Afiches', 'Magnéticos', 'Credenciales y Fotochecks', 'Calendarios', 'Talonarios', 'Etiquetas'],
+        items: [
+            { name: 'Tarjetas Personales', image: '/images/item-tarjetas.png' },
+            { name: 'Flyers y Volantes' },
+            { name: 'Afiches' },
+            { name: 'Magnéticos' },
+            { name: 'Credenciales y Fotochecks' },
+            { name: 'Calendarios' },
+            { name: 'Talonarios' },
+            { name: 'Etiquetas' }
+        ],
         image: '/images/category-papeleria.png'
     },
     {
@@ -57,7 +95,14 @@ const categories = [
         subtitle: 'Visibilidad Permanente',
         icon: <Lightbulb size={32} />,
         color: 'var(--color-signal-pink)',
-        items: ['Letreros Luminosos', 'Cajas de Luz', 'Señalética de Seguridad', 'Placas Grabadas', 'Vinilos Decorativos', 'Ploteos'],
+        items: [
+            { name: 'Letreros Luminosos' },
+            { name: 'Cajas de Luz' },
+            { name: 'Señalética de Seguridad' },
+            { name: 'Placas Grabadas' },
+            { name: 'Vinilos Decorativos' },
+            { name: 'Ploteos' }
+        ],
         image: '/images/category-senaletica.png'
     }
 ];
@@ -130,7 +175,7 @@ const Products = () => {
                             <div className="flex flex-wrap gap-2">
                                 {category.items.slice(0, 3).map((item, idx) => (
                                     <span key={idx} className="text-[10px] font-bold uppercase tracking-wider border border-black/10 px-2 py-1 rounded-sm group-hover:border-white/20 group-hover:text-white/80 transition-colors">
-                                        {item}
+                                        {item.name}
                                     </span>
                                 ))}
                                 {category.items.length > 3 && (
