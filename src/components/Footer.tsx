@@ -24,9 +24,13 @@ const Footer = () => {
             <div className="pt-20 pb-10">
                 <div className="container-fluid grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
                     <div>
-                        <h3 className="text-4xl font-black uppercase tracking-tighter mb-6">
-                            Publi<span className="text-[var(--color-signal-pink)]">zhen</span>.
-                        </h3>
+                        <Link to="/" className="block mb-6">
+                            <img
+                                src="/images/logo.png"
+                                alt="Publizhen"
+                                className="h-24 w-auto object-contain"
+                            />
+                        </Link>
                         <p className="text-gray-400 font-medium mb-8 max-w-xs">
                             Soluciones de impacto visual para marcas que se atreven a destacar.
                         </p>
