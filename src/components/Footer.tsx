@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { Facebook, Instagram, MapPin, Phone, Mail, ArrowRight } from 'lucide-react';
 
 const Footer = () => {
@@ -25,7 +26,9 @@ const Footer = () => {
                 <div className="container-fluid grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
                     <div>
                         <Link to="/" className="block mb-6">
-                            <img
+                            <motion.img
+                                whileHover={{ scale: 1.1, rotate: 5 }}
+                                transition={{ type: "spring", stiffness: 300 }}
                                 src="/images/logo.png"
                                 alt="Publizhen"
                                 className="h-24 w-auto object-contain"

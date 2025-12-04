@@ -82,7 +82,13 @@ const Products = () => {
                         onMouseLeave={() => setHoveredCategory(null)}
                         initial="rest"
                         whileHover="hover"
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-50px" }}
                         animate="rest"
+                        variants={{
+                            rest: { opacity: 0, y: 50 },
+                            hover: { opacity: 1, y: 0 }
+                        }}
                     >
                         {/* Background Reveal */}
                         <motion.div

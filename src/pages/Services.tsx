@@ -1,4 +1,5 @@
 import ManifestoSection from '../components/ManifestoSection';
+import { ScrollReveal } from '../components/ScrollReveal';
 
 const services = [
     {
@@ -51,7 +52,7 @@ const Services = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 border-t border-black/10">
                 {services.map((service, index) => (
-                    <div key={index} className="group border-b border-r border-black/10 min-h-[500px] relative overflow-hidden">
+                    <ScrollReveal key={index} width="100%" delay={index * 0.1} className="group border-b border-r border-black/10 min-h-[500px] relative overflow-hidden">
                         {/* Image Background */}
                         <div className="absolute inset-0">
                             <img src={service.image} alt={service.title} className="w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-105 group-hover:scale-100" />
@@ -77,7 +78,7 @@ const Services = () => {
                                 ))}
                             </div>
                         </div>
-                    </div>
+                    </ScrollReveal>
                 ))}
             </div>
         </div>
