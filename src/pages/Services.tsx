@@ -1,6 +1,7 @@
 import ManifestoSection from '../components/ManifestoSection';
 import { ScrollReveal } from '../components/ScrollReveal';
 import SEO from '../components/SEO';
+import ProcessVisualization from '../components/ProcessVisualization';
 
 const services = [
     {
@@ -51,7 +52,9 @@ const Services = () => {
             />
             <ManifestoSection />
 
-            <div className="container-fluid mb-20 mt-20">
+            <ProcessVisualization />
+
+            <div className="container-fluid mb-20 mt-32">
                 <h1 className="text-[var(--text-display)] leading-none font-black uppercase tracking-tighter mb-4">
                     Servicios <span className="text-[var(--color-signal-pink)]">.</span>
                 </h1>

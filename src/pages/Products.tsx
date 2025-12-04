@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Package, Monitor, Gamepad2, Layers, ArrowUpRight, Sticker, Lightbulb } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SEO from '../components/SEO';
+import FeaturedProduct from '../components/FeaturedProduct';
+import ProductModal from '../components/ProductModal';
 
 const categories = [
     {
@@ -62,6 +64,7 @@ const categories = [
 
 const Products = () => {
     const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
+    const [selectedProduct, setSelectedProduct] = useState<any>(null);
 
     return (
         <div className="pt-32 pb-20 min-h-screen bg-[var(--color-canvas)] relative">
@@ -71,6 +74,13 @@ const Products = () => {
                 keywords="Displays Publicitarios, Roll Screen, Módulos BTL, Juegos BTL, Ruletas Publicitarias, Corpóreos 3D, Materiales Publicitarios"
                 url="/productos"
             />
+
+            <ProductModal
+                isOpen={!!selectedProduct}
+                onClose={() => setSelectedProduct(null)}
+                product={selectedProduct}
+            />
+
             <div className="container-fluid mb-20 relative z-10">
                 <h1 className="text-[var(--text-display)] leading-none font-black uppercase tracking-tighter mb-4 mix-blend-multiply">
                     Catálogo <span className="text-[var(--color-signal-orange)]">.</span>
@@ -80,13 +90,17 @@ const Products = () => {
                 </p>
             </div>
 
-            <div className="border-t border-black relative z-10">
+            {/* Featured Product Section */}
+            <FeaturedProduct />
+
+            <div className="border-t border-black relative z-10 mt-20">
                 {categories.map((category, index) => (
                     <motion.div
                         key={category.id}
                         className="group border-b border-black/10 relative overflow-hidden cursor-pointer"
                         onMouseEnter={() => setHoveredCategory(category.id)}
                         onMouseLeave={() => setHoveredCategory(null)}
+                        onClick={() => setSelectedProduct(category)}
                         initial="rest"
                         whileHover="hover"
                         whileInView={{ opacity: 1, y: 0 }}
