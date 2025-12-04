@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { PlaceholderLogo } from './BrandLogos';
 
 const clients = [
@@ -21,42 +20,54 @@ const clients = [
 
 const ClientsSection = () => {
     return (
-        <section className="py-20 bg-[var(--color-signal-yellow)] border-b border-black overflow-hidden">
-            <div className="container-fluid mb-12">
-                <h2 className="text-2xl font-black uppercase tracking-widest text-black/40">
-                    Confían en nosotros
-                </h2>
+        <section className="py-24 bg-[var(--color-signal-yellow)] border-b border-black overflow-hidden relative">
+            {/* Header */}
+            <div className="container-fluid mb-16 px-8 md:px-16">
+                <div className="flex items-center gap-4">
+                    <div className="w-3 h-3 bg-black"></div>
+                    <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-black/60">
+                        Trusted By Industry Leaders
+                    </h2>
+                </div>
             </div>
 
-            <div className="relative flex overflow-x-hidden group">
-                <motion.div
-                    className="flex whitespace-nowrap gap-32 items-center"
-                    animate={{ x: ["0%", "-50%"] }}
-                    transition={{
-                        repeat: Infinity,
-                        ease: "linear",
-                        duration: 300 // Slower animation
-                    }}
-                >
+            {/* Gradient Masks for "Infinite" Illusion */}
+            <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-[var(--color-signal-yellow)] to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-[var(--color-signal-yellow)] to-transparent z-10 pointer-events-none"></div>
+
+            {/* Marquee Container */}
+            <div className="relative flex overflow-hidden group">
+                {/* Inner Track - Duplicated for seamless loop */}
+                <div className="flex animate-marquee group-hover:[animation-play-state:paused] whitespace-nowrap">
                     {[...clients, ...clients].map((client, index) => (
-                        <div key={index} className="flex flex-col items-center justify-center gap-6 shrink-0">
-                            <span
-                                className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-black opacity-80 hover:opacity-100 transition-opacity cursor-default"
-                                style={{ WebkitTextStroke: "1px black", color: "transparent" }}
-                            >
-                                {client.name}
-                            </span>
-                            <div className="opacity-80 hover:opacity-100 transition-opacity scale-125 h-16 flex items-center justify-center">
-                                {client.logo ? (
-                                    <img src={client.logo} alt={client.name} className="h-full w-auto object-contain mix-blend-multiply" />
-                                ) : (
-                                    client.Component && <client.Component />
-                                )}
+                        <div key={index} className="flex items-center">
+                            {/* Client Card */}
+                            <div className="flex flex-col items-center justify-center w-[300px] md:w-[400px] px-8 border-r border-black/5 relative">
+                                {/* Technical Label */}
+                                <span className="text-xs font-bold uppercase tracking-widest text-black/40 mb-6">
+                                    {client.name}
+                                </span>
+
+                                {/* Logo Container */}
+                                <div className="h-20 md:h-24 w-full flex items-center justify-center transition-all duration-300 filter grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 cursor-pointer">
+                                    {client.logo ? (
+                                        <img
+                                            src={client.logo}
+                                            alt={client.name}
+                                            className="h-full w-auto object-contain mix-blend-multiply"
+                                        />
+                                    ) : (
+                                        client.Component && <div className="scale-75"><client.Component /></div>
+                                    )}
+                                </div>
                             </div>
                         </div>
                     ))}
-                </motion.div>
+                </div>
             </div>
+
+            {/* Bottom Decoration */}
+            <div className="absolute bottom-0 left-0 w-full h-1 bg-black/5"></div>
         </section>
     );
 };
