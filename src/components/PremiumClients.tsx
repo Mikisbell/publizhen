@@ -32,7 +32,7 @@ const clients = [
 
 function Card({ client, mouseX, mouseY }: { client: any; mouseX: any; mouseY: any }) {
     return (
-        <div className="group relative h-40 w-[300px] overflow-hidden rounded-xl bg-neutral-900 border border-white/10">
+        <div className="group relative h-40 w-[300px] shrink-0 overflow-hidden rounded-xl bg-neutral-900 border border-white/10">
             {/* Spotlight Effect */}
             <motion.div
                 className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100"
@@ -103,7 +103,7 @@ function ParallaxText({ children, baseVelocity = 100 }: { children: any; baseVel
     });
 
     return (
-        <div className="parallax">
+        <div className="overflow-hidden m-0 flex flex-nowrap whitespace-nowrap">
             <motion.div className="scroller flex flex-nowrap gap-8" style={{ x }}>
                 {children}
                 {children}
