@@ -1,59 +1,67 @@
 import { Quote } from 'lucide-react';
+import { ScrollReveal } from './ScrollReveal';
 
 const testimonials = [
     {
-        id: 1,
-        text: "Publizhen transformó completamente nuestra presencia en ferias. El stand que diseñaron no solo fue funcional, sino que se convirtió en el centro de atención.",
-        author: "Carlos Mendoza",
-        role: "Gerente de Marketing, TechCorp",
-        color: "var(--color-signal-pink)"
+        quote: "La transformación de nuestra flota vehicular fue radical. Publizhen no solo instaló vinilos, creó una identidad móvil que ahora es reconocida en todo Lima.",
+        author: "Carlos Rodríguez",
+        role: "Gerente de Logística",
+        company: "TransLogística Perú",
+        initials: "CR",
+        color: "bg-blue-600"
     },
     {
-        id: 2,
-        text: "La calidad de las gigantografías es impresionante. Incluso después de meses a la intemperie, los colores siguen vibrantes como el primer día.",
-        author: "Ana Lucía Vega",
-        role: "Directora Creativa, Studio 54",
-        color: "var(--color-signal-orange)"
+        quote: "Necesitábamos impactar en el lanzamiento de nuestra nueva bebida. Los juegos BTL y la activación que diseñaron superaron todas nuestras métricas de engagement.",
+        author: "Ana María Flores",
+        role: "Directora de Marketing",
+        company: "Bebidas Andinas",
+        initials: "AF",
+        color: "bg-red-600"
     },
     {
-        id: 3,
-        text: "Entendieron nuestra identidad visual a la perfección. El rebranding que hicieron para nuestra flota de vehículos nos ha traído nuevos clientes.",
-        author: "Roberto Chang",
-        role: "CEO, Logística Express",
-        color: "var(--color-signal-yellow)"
+        quote: "La señalética industrial de nuestra planta cumple con todas las normas ISO y además se ve increíble. Eficiencia y estética industrial pura.",
+        author: "Ing. Miguel Ángel Torres",
+        role: "Jefe de Planta",
+        company: "Manufacturas del Sur",
+        initials: "MT",
+        color: "bg-yellow-600"
     }
 ];
 
 const TestimonialsSection = () => {
     return (
-        <section className="py-32 bg-[var(--color-canvas)] border-b border-black/10">
-            <div className="container-fluid">
-                <div className="mb-20">
-                    <span className="text-[var(--color-signal-pink)] font-black uppercase tracking-widest text-sm block mb-4">Testimonios</span>
-                    <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none">
-                        Lo que dicen <br />
-                        <span className="text-stroke">nuestros clientes</span>
+        <section className="py-32 bg-white border-t border-black/10">
+            <div className="container-fluid mb-20">
+                <ScrollReveal>
+                    <h2 className="text-[6vw] leading-none font-black uppercase tracking-tighter mb-8">
+                        Voces de la <br />
+                        <span className="text-transparent" style={{ WebkitTextStroke: "2px black" }}>Industria</span>
                     </h2>
-                </div>
+                </ScrollReveal>
+            </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {testimonials.map((item) => (
-                        <div key={item.id} className="bg-white p-10 border border-black/5 shadow-xl hover:-translate-y-2 transition-transform duration-300 relative group overflow-hidden">
-                            <div className="absolute top-0 left-0 w-2 h-full transition-all duration-300 group-hover:w-full opacity-10" style={{ backgroundColor: item.color }}></div>
-
-                            <Quote size={48} className="text-black/10 mb-8 relative z-10" />
-
-                            <p className="text-lg font-medium leading-relaxed mb-8 relative z-10 text-gray-700">
-                                "{item.text}"
+            <div className="container-fluid grid grid-cols-1 md:grid-cols-3 gap-12">
+                {testimonials.map((item, index) => (
+                    <ScrollReveal key={index} delay={index * 0.2} className="flex flex-col justify-between h-full border-l-4 border-black pl-8 py-4 hover:bg-gray-50 transition-colors duration-300 group">
+                        <div>
+                            <Quote size={48} className="text-black/20 mb-8 group-hover:text-[var(--color-signal-pink)] transition-colors" />
+                            <p className="text-xl md:text-2xl font-medium leading-relaxed mb-8 text-black/80">
+                                "{item.quote}"
                             </p>
+                        </div>
 
-                            <div className="relative z-10 border-t border-black/5 pt-6">
-                                <h4 className="font-black uppercase text-sm tracking-wide">{item.author}</h4>
-                                <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mt-1">{item.role}</p>
+                        <div className="flex items-center gap-4">
+                            <div className={`w-12 h-12 ${item.color} rounded-full flex items-center justify-center text-white font-bold text-lg shrink-0`}>
+                                {item.initials}
+                            </div>
+                            <div>
+                                <h4 className="font-bold uppercase tracking-wider text-sm">{item.author}</h4>
+                                <p className="text-xs font-bold text-black/40 uppercase tracking-widest">{item.role}</p>
+                                <p className="text-xs text-[var(--color-signal-pink)] font-bold mt-1">{item.company}</p>
                             </div>
                         </div>
-                    ))}
-                </div>
+                    </ScrollReveal>
+                ))}
             </div>
         </section>
     );

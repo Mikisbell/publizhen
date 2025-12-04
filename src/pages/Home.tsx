@@ -1,86 +1,62 @@
-import { ArrowRight, Printer, PenTool, Layout as LayoutIcon } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import HeroCinematic from '../components/HeroCinematic';
 import ClientsSection from '../components/ClientsSection';
 import TestimonialsSection from '../components/TestimonialsSection';
 import PortfolioSection from '../components/PortfolioSection';
+import { ScrollReveal } from '../components/ScrollReveal';
 
 const Home = () => {
+    const services = [
+        {
+            title: "Dominio del Espacio",
+            description: "Gran Formato. Desde lonas gigantes hasta vinilos de precisión. Hacemos que tu mensaje sea el dueño del entorno físico.",
+            link: "/servicios"
+        },
+        {
+            title: "Arquitectura Efímera",
+            description: "Displays & BTL. Estructuras portátiles diseñadas para ferias y eventos donde tienes segundos para captar un cliente.",
+            link: "/productos"
+        },
+        {
+            title: "Identidad Visual",
+            description: "Branding. No solo diseñamos logos, construimos sistemas visuales coherentes que transmiten autoridad y confianza.",
+            link: "/branding"
+        }
+    ];
+
     return (
         <div className="bg-[var(--color-canvas)]">
+            {/* Hero Section */}
             <HeroCinematic />
 
+            {/* Clients Marquee */}
             <ClientsSection />
 
-            {/* Services Section - Editorial Grid */}
-            <section className="py-0 bg-white relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-3">
-                    {/* Service 1 */}
-                    <div className="group border-r border-b border-black/10 p-12 min-h-[600px] flex flex-col justify-between hover:bg-black hover:text-white transition-colors duration-500 relative overflow-hidden">
-                        <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-40 transition-opacity duration-500">
-                            <img src="/images/service-print.webp" alt="Gran Formato" className="w-full h-full object-cover grayscale" />
-                        </div>
-
-                        <div className="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-100 transition-opacity z-10 duration-500">
-                            <Printer size={80} className="text-black group-hover:text-[var(--color-signal-pink)] transition-colors" />
-                        </div>
+            {/* Services Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 border-b border-black/10">
+                {services.map((service, index) => (
+                    <ScrollReveal key={index} width="100%" delay={index * 0.1} className="group border-r border-black/10 min-h-[60vh] relative overflow-hidden flex flex-col justify-between p-12 hover:bg-black hover:text-white transition-colors duration-500">
                         <div className="relative z-10">
-                            <span className="text-8xl font-black text-black/5 group-hover:text-[var(--color-signal-pink)] transition-colors duration-500 block -ml-2">01</span>
-                            <h3 className="text-4xl font-black uppercase mt-4 mb-6 tracking-tight">Dominio del Espacio</h3>
-                            <p className="text-gray-500 group-hover:text-white/80 font-medium leading-relaxed transition-colors text-lg">
-                                Gran Formato. Desde lonas gigantes hasta vinilos de precisión. Hacemos que tu mensaje sea el dueño del entorno físico.
-                            </p>
+                            <span className="text-8xl font-black text-black/5 group-hover:text-[var(--color-signal-pink)] transition-colors duration-500 block -ml-2 mb-8">
+                                0{index + 1}
+                            </span>
+                            <h3 className="text-4xl font-black uppercase mb-4">{service.title}</h3>
+                            <p className="text-xl font-medium opacity-80 max-w-sm">{service.description}</p>
                         </div>
-                        <Link to="/servicios" className="relative z-10 mt-12 text-sm font-bold uppercase tracking-widest flex items-center group-hover:text-[var(--color-signal-pink)] transition-colors">
-                            Explorar Soluciones <ArrowRight size={16} className="ml-2 group-hover:translate-x-2 transition-transform" />
-                        </Link>
-                    </div>
+                        <div className="relative z-10 flex justify-end mt-12">
+                            <Link to={service.link} className="btn-signal border-black group-hover:border-white group-hover:text-white flex items-center gap-2">
+                                Explorar <ArrowRight size={16} />
+                            </Link>
+                        </div>
+                    </ScrollReveal>
+                ))}
+            </div>
 
-                    {/* Service 2 */}
-                    <div className="group border-r border-b border-black/10 p-12 min-h-[600px] flex flex-col justify-between hover:bg-black hover:text-white transition-colors duration-500 relative overflow-hidden">
-                        <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-40 transition-opacity duration-500">
-                            <img src="/images/product-rollup.webp" alt="Displays" className="w-full h-full object-cover grayscale" />
-                        </div>
-
-                        <div className="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-100 transition-opacity z-10 duration-500">
-                            <LayoutIcon size={80} className="text-black group-hover:text-[var(--color-signal-orange)] transition-colors" />
-                        </div>
-                        <div className="relative z-10">
-                            <span className="text-8xl font-black text-black/5 group-hover:text-[var(--color-signal-orange)] transition-colors duration-500 block -ml-2">02</span>
-                            <h3 className="text-4xl font-black uppercase mt-4 mb-6 tracking-tight">Arquitectura Efímera</h3>
-                            <p className="text-gray-500 group-hover:text-white/80 font-medium leading-relaxed transition-colors text-lg">
-                                Displays & BTL. Estructuras portátiles diseñadas para ferias y eventos donde tienes segundos para captar un cliente.
-                            </p>
-                        </div>
-                        <Link to="/productos" className="relative z-10 mt-12 text-sm font-bold uppercase tracking-widest flex items-center group-hover:text-[var(--color-signal-orange)] transition-colors">
-                            Ver Catálogo <ArrowRight size={16} className="ml-2 group-hover:translate-x-2 transition-transform" />
-                        </Link>
-                    </div>
-
-                    {/* Service 3 */}
-                    <div className="group border-b border-black/10 p-12 min-h-[600px] flex flex-col justify-between hover:bg-black hover:text-white transition-colors duration-500 relative overflow-hidden">
-                        <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-40 transition-opacity duration-500">
-                            <img src="/images/service-design.webp" alt="Branding" className="w-full h-full object-cover grayscale" />
-                        </div>
-
-                        <div className="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-100 transition-opacity z-10 duration-500">
-                            <PenTool size={80} className="text-black group-hover:text-[var(--color-signal-yellow)] transition-colors" />
-                        </div>
-                        <div className="relative z-10">
-                            <span className="text-8xl font-black text-black/5 group-hover:text-[var(--color-signal-yellow)] transition-colors duration-500 block -ml-2">03</span>
-                            <h3 className="text-4xl font-black uppercase mt-4 mb-6 tracking-tight">Identidad Visual</h3>
-                            <p className="text-gray-500 group-hover:text-white/80 font-medium leading-relaxed transition-colors text-lg">
-                                Branding. No solo diseñamos logos, construimos sistemas visuales coherentes que transmiten autoridad y confianza.
-                            </p>
-                        </div>
-                        <Link to="/branding" className="relative z-10 mt-12 text-sm font-bold uppercase tracking-widest flex items-center group-hover:text-[var(--color-signal-yellow)] transition-colors">
-                            Ver Portafolio <ArrowRight size={16} className="ml-2 group-hover:translate-x-2 transition-transform" />
-                        </Link>
-                    </div>
-                </div>
-            </section>
-
+            {/* Portfolio Section */}
             <PortfolioSection />
+
+            {/* Testimonials Section */}
             <TestimonialsSection />
         </div>
     );

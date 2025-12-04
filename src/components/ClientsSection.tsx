@@ -1,47 +1,62 @@
 import { motion } from 'framer-motion';
 
 const clients = [
-    { name: 'Client 1', logo: 'https://placehold.co/200x80/e2e2e2/1a1a1a?text=CLIENTE+01' },
-    { name: 'Client 2', logo: 'https://placehold.co/200x80/e2e2e2/1a1a1a?text=CLIENTE+02' },
-    { name: 'Client 3', logo: 'https://placehold.co/200x80/e2e2e2/1a1a1a?text=CLIENTE+03' },
-    { name: 'Client 4', logo: 'https://placehold.co/200x80/e2e2e2/1a1a1a?text=CLIENTE+04' },
-    { name: 'Client 5', logo: 'https://placehold.co/200x80/e2e2e2/1a1a1a?text=CLIENTE+05' },
-    { name: 'Client 6', logo: 'https://placehold.co/200x80/e2e2e2/1a1a1a?text=CLIENTE+06' },
+    "BANCO DE CRÉDITO",
+    "INTERBANK",
+    "ALICORP",
+    "GLORIA",
+    "BACKUS",
+    "FERREYROS",
+    "BBVA",
+    "SCOTIABANK",
+    "PRIMAX",
+    "CEMENTOS PACASMAYO",
+    "AJE GROUP",
+    "GRAÑA Y MONTERO"
 ];
 
 const ClientsSection = () => {
     return (
-        <section className="py-20 bg-white border-b border-black/10 overflow-hidden">
+        <section className="py-20 bg-[var(--color-signal-yellow)] border-b border-black overflow-hidden">
             <div className="container-fluid mb-12">
-                <p className="text-sm font-bold uppercase tracking-widest text-gray-400 text-center">
+                <h2 className="text-2xl font-black uppercase tracking-widest text-black/40">
                     Confían en nosotros
-                </p>
+                </h2>
             </div>
 
             <div className="relative flex overflow-x-hidden group">
-                <div className="animate-marquee whitespace-nowrap flex gap-20 items-center">
-                    {[...clients, ...clients, ...clients].map((client, idx) => (
-                        <motion.div
-                            key={idx}
-                            whileHover={{ scale: 1.1, filter: "grayscale(0%)" }}
-                            className="w-[200px] opacity-50 hover:opacity-100 grayscale transition-all duration-300 cursor-pointer"
+                <motion.div
+                    className="flex whitespace-nowrap gap-20 animate-marquee"
+                    animate={{ x: ["0%", "-50%"] }}
+                    transition={{
+                        repeat: Infinity,
+                        ease: "linear",
+                        duration: 30
+                    }}
+                >
+                    {[...clients, ...clients].map((client, index) => (
+                        <span
+                            key={index}
+                            className="text-6xl md:text-8xl font-black uppercase tracking-tighter text-black opacity-80 hover:opacity-100 transition-opacity cursor-default"
+                            style={{ WebkitTextStroke: "2px black", color: "transparent" }}
                         >
-                            <img src={client.logo} alt={client.name} className="w-full h-auto" />
-                        </motion.div>
+                            {client}
+                        </span>
                     ))}
-                </div>
+                </motion.div>
 
-                <div className="absolute top-0 animate-marquee2 whitespace-nowrap flex gap-20 items-center ml-20">
-                    {[...clients, ...clients, ...clients].map((client, idx) => (
-                        <motion.div
-                            key={idx}
-                            whileHover={{ scale: 1.1, filter: "grayscale(0%)" }}
-                            className="w-[200px] opacity-50 hover:opacity-100 grayscale transition-all duration-300 cursor-pointer"
-                        >
-                            <img src={client.logo} alt={client.name} className="w-full h-auto" />
-                        </motion.div>
-                    ))}
-                </div>
+                <motion.div
+                    className="flex whitespace-nowrap gap-20 absolute top-0 left-0 animate-marquee2"
+                    animate={{ x: ["0%", "-50%"] }}
+                    transition={{
+                        repeat: Infinity,
+                        ease: "linear",
+                        duration: 30
+                    }}
+                    style={{ display: 'none' }} // Fallback/Duplicate handling handled by single motion div above for simplicity
+                >
+                    {/* Redundant for simple Framer Motion loop */}
+                </motion.div>
             </div>
         </section>
     );
