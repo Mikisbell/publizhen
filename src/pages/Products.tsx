@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Package, Monitor, Gamepad2, Layers, ArrowUpRight, Sticker, Lightbulb } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
 import FeaturedProduct from '../components/FeaturedProduct';
 import ProductModal from '../components/ProductModal';
@@ -63,7 +63,6 @@ const categories = [
 ];
 
 const Products = () => {
-    const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
     const [selectedProduct, setSelectedProduct] = useState<any>(null);
 
     return (
@@ -93,84 +92,52 @@ const Products = () => {
             {/* Featured Product Section */}
             <FeaturedProduct />
 
-            <div className="border-t border-black relative z-10 mt-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-black/10 border-t border-black/10">
                 {categories.map((category, index) => (
                     <motion.div
                         key={category.id}
-                        className="group border-b border-black/10 relative overflow-hidden cursor-pointer"
-                        onMouseEnter={() => setHoveredCategory(category.id)}
-                        onMouseLeave={() => setHoveredCategory(null)}
+                        className="group bg-white relative overflow-hidden cursor-pointer min-h-[400px] flex flex-col justify-between p-8 hover:bg-black transition-colors duration-500"
                         onClick={() => setSelectedProduct(category)}
-                        initial="rest"
-                        whileHover="hover"
+                        initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: "-50px" }}
-                        animate="rest"
-                        variants={{
-                            rest: { opacity: 0, y: 50 },
-                            hover: { opacity: 1, y: 0 }
-                        }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.1 }}
                     >
-                        {/* Background Reveal */}
-                        <motion.div
-                            className="absolute inset-0 z-0 bg-black"
-                            variants={{
-                                rest: { opacity: 0 },
-                                hover: { opacity: 1 }
-                            }}
-                            transition={{ duration: 0.3 }}
-                        />
+                        {/* Background Image Reveal */}
+                        <div className="absolute inset-0 opacity-0 group-hover:opacity-40 transition-opacity duration-500 pointer-events-none">
+                            <img src={category.image} alt={category.title} className="w-full h-full object-cover grayscale" />
+                        </div>
 
-                        {/* Image Reveal on Hover (Large, Fixed or Absolute) */}
-                        <AnimatePresence>
-                            {hoveredCategory === category.id && (
-                                <motion.div
-                                    className="absolute right-0 top-0 h-full w-1/2 z-0 hidden lg:block pointer-events-none opacity-50 mix-blend-luminosity"
-                                    initial={{ x: 100, opacity: 0 }}
-                                    animate={{ x: 0, opacity: 0.4 }}
-                                    exit={{ x: 100, opacity: 0 }}
-                                    transition={{ duration: 0.4, ease: "easeOut" }}
-                                >
-                                    <img src={category.image} alt={category.title} className="w-full h-full object-cover" />
-                                    <div className="absolute inset-0 bg-gradient-to-l from-transparent to-black" />
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-
-                        <div className="container-fluid py-12 grid grid-cols-1 lg:grid-cols-12 gap-8 relative z-10">
-                            {/* Header */}
-                            <div className="lg:col-span-5 flex flex-col justify-center">
-                                <div className="flex items-baseline gap-4">
-                                    <span className="text-sm font-bold uppercase tracking-widest text-black/40 group-hover:text-white/40 mb-2 block transition-colors">0{index + 1}</span>
-                                    <h2 className="text-6xl font-black uppercase mb-2 text-black group-hover:text-white transition-colors duration-300">
-                                        {category.title}
-                                    </h2>
+                        {/* Header */}
+                        <div className="relative z-10">
+                            <div className="flex justify-between items-start mb-4">
+                                <span className="text-xs font-bold uppercase tracking-widest text-black/40 group-hover:text-white/60 transition-colors">0{index + 1}</span>
+                                <div className="text-black/20 group-hover:text-[var(--color-signal-orange)] transition-colors transform group-hover:rotate-45 duration-300">
+                                    <ArrowUpRight size={24} />
                                 </div>
-                                <p className="text-lg font-medium text-black/60 group-hover:text-[var(--color-signal-orange)] transition-colors pl-10">{category.subtitle}</p>
                             </div>
-
-                            {/* Items Grid - Auto Reveal */}
-                            <div className="lg:col-span-7 flex items-center">
-                                <motion.div
-                                    className="flex flex-wrap gap-3"
-                                    variants={{
-                                        rest: { opacity: 0.6 },
-                                        hover: { opacity: 1 }
-                                    }}
-                                >
-                                    {category.items.map((item, idx) => (
-                                        <span
-                                            key={idx}
-                                            className="px-4 py-2 border border-black/10 bg-white/50 text-sm font-bold uppercase tracking-wider text-black group-hover:bg-transparent group-hover:border-white/30 group-hover:text-white transition-all duration-300"
-                                        >
-                                            {item}
-                                        </span>
-                                    ))}
-                                </motion.div>
+                            <div className="mb-2 text-[var(--color-signal-orange)] opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                                {category.icon}
                             </div>
+                            <h2 className="text-3xl font-black uppercase mb-2 text-black group-hover:text-white transition-colors duration-300 leading-none">
+                                {category.title}
+                            </h2>
+                            <p className="text-sm font-medium text-black/60 group-hover:text-white/80 transition-colors">{category.subtitle}</p>
+                        </div>
 
-                            <div className="absolute right-8 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[var(--color-signal-orange)]">
-                                <ArrowUpRight size={64} />
+                        {/* Items List (Compact) */}
+                        <div className="relative z-10 mt-8">
+                            <div className="flex flex-wrap gap-2">
+                                {category.items.slice(0, 3).map((item, idx) => (
+                                    <span key={idx} className="text-[10px] font-bold uppercase tracking-wider border border-black/10 px-2 py-1 rounded-sm group-hover:border-white/20 group-hover:text-white/80 transition-colors">
+                                        {item}
+                                    </span>
+                                ))}
+                                {category.items.length > 3 && (
+                                    <span className="text-[10px] font-bold uppercase tracking-wider border border-black/10 px-2 py-1 rounded-sm group-hover:border-white/20 group-hover:text-[var(--color-signal-orange)] transition-colors">
+                                        +{category.items.length - 3}
+                                    </span>
+                                )}
                             </div>
                         </div>
                     </motion.div>

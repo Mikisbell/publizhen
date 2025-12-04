@@ -1,71 +1,78 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { motion } from 'framer-motion';
+import { ArrowRight, Zap, Shield, Leaf } from 'lucide-react';
 
 const FeaturedProduct = () => {
-    const ref = useRef(null);
-    const { scrollYProgress } = useScroll({
-        target: ref,
-        offset: ["start end", "end start"]
-    });
-
-    const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-    const opacity = useTransform(scrollYProgress, [0, 0.3, 0.8, 1], [0, 1, 1, 0]);
-
     return (
-        <div ref={ref} className="min-h-screen flex items-center justify-center relative overflow-hidden py-20">
-            {/* Background Text */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
-                <h2 className="text-[20vw] font-black text-black/5 whitespace-nowrap">
-                    NEW ARRIVAL
-                </h2>
-            </div>
+        <div className="container-fluid py-20">
+            <div className="relative rounded-[2.5rem] bg-[#0a0a0a] overflow-hidden text-white shadow-2xl">
+                {/* Background Glow */}
+                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[var(--signal-pink)] rounded-full blur-[150px] opacity-20 pointer-events-none -translate-y-1/2 translate-x-1/2" />
 
-            <div className="container-fluid relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <motion.div style={{ y, opacity }} className="relative">
-                    <div className="aspect-[4/5] bg-black/5 rounded-3xl overflow-hidden relative group">
-                        <img
-                            src="/images/product-neon.webp"
-                            alt="Neon Sign"
-                            className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                        <div className="absolute bottom-8 left-8 text-white">
-                            <span className="bg-[var(--signal-pink)] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-4 inline-block">
-                                Tendencia 2025
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 p-12 lg:p-20 items-center relative z-10">
+
+                    {/* Content Side */}
+                    <div className="lg:col-span-7 space-y-10">
+                        <div className="flex items-center gap-4">
+                            <span className="bg-white/10 backdrop-blur-md border border-white/10 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-[var(--signal-pink)]">
+                                New Arrival 2025
                             </span>
-                            <h3 className="text-4xl font-black uppercase">Neon Flex 2.0</h3>
+                            <span className="text-white/40 text-sm font-medium uppercase tracking-widest">Edición Limitada</span>
                         </div>
-                    </div>
-                </motion.div>
 
-                <div className="space-y-8">
-                    <h3 className="text-5xl md:text-7xl font-black uppercase leading-[0.9]">
-                        Iluminación <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--signal-pink)] to-[var(--signal-orange)]">
-                            Sin Límites
-                        </span>
-                    </h3>
-                    <p className="text-xl font-medium text-black/60 max-w-md leading-relaxed">
-                        La evolución del neón tradicional. Más brillante, más duradero y 100% personalizable. Ideal para interiores comerciales y señalética de alto impacto.
-                    </p>
+                        <h2 className="text-6xl lg:text-8xl font-black uppercase leading-[0.9] tracking-tight">
+                            Neon Flex <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--signal-pink)] to-white">Ultra 2.0</span>
+                        </h2>
 
-                    <div className="grid grid-cols-2 gap-4">
-                        {[
-                            { label: "Vida Útil", val: "50,000h" },
-                            { label: "Consumo", val: "-80%" },
-                            { label: "Material", val: "Silicón IP67" },
-                            { label: "Garantía", val: "3 Años" }
-                        ].map((spec, idx) => (
-                            <div key={idx} className="border border-black/10 p-4 rounded-xl">
-                                <div className="text-xs font-bold uppercase text-black/40 mb-1">{spec.label}</div>
-                                <div className="text-xl font-black">{spec.val}</div>
+                        <p className="text-xl text-white/60 max-w-xl leading-relaxed font-light">
+                            Olvida el vidrio frágil. Nuestra nueva tecnología de silicón IP67 ofrece la misma intensidad lumínica con cero riesgo de rotura y 50,000 horas de vida útil.
+                        </p>
+
+                        {/* Specs Grid */}
+                        <div className="grid grid-cols-3 gap-6 border-t border-white/10 pt-8">
+                            <div>
+                                <Zap className="text-[var(--signal-yellow)] mb-3" size={24} />
+                                <div className="text-2xl font-bold">12V</div>
+                                <div className="text-xs text-white/40 uppercase tracking-wider">Bajo Consumo</div>
                             </div>
-                        ))}
+                            <div>
+                                <Shield className="text-[var(--signal-pink)] mb-3" size={24} />
+                                <div className="text-2xl font-bold">IP67</div>
+                                <div className="text-xs text-white/40 uppercase tracking-wider">Waterproof</div>
+                            </div>
+                            <div>
+                                <Leaf className="text-[var(--signal-green)] mb-3" size={24} />
+                                <div className="text-2xl font-bold">ECO</div>
+                                <div className="text-xs text-white/40 uppercase tracking-wider">Silicón Reciclable</div>
+                            </div>
+                        </div>
+
+                        <button className="group flex items-center gap-4 bg-white text-black px-8 py-4 rounded-xl font-bold uppercase tracking-wider hover:bg-[var(--signal-pink)] hover:text-white transition-all duration-300">
+                            Ver Especificaciones
+                            <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+                        </button>
                     </div>
 
-                    <button className="btn-signal text-lg px-8 py-4 w-full md:w-auto">
-                        Solicitar Ficha Técnica
-                    </button>
+                    {/* Image Side (Parallax/Floating) */}
+                    <div className="lg:col-span-5 relative h-full min-h-[400px] flex items-center justify-center">
+                        <motion.div
+                            initial={{ y: 20, opacity: 0 }}
+                            whileInView={{ y: 0, opacity: 1 }}
+                            transition={{ duration: 0.8 }}
+                            className="relative w-full aspect-square"
+                        >
+                            {/* Decorative Circle */}
+                            <div className="absolute inset-0 border border-white/10 rounded-full scale-90 animate-[spin_10s_linear_infinite]" />
+                            <div className="absolute inset-0 border border-white/5 rounded-full scale-110" />
+
+                            {/* Product Image */}
+                            <img
+                                src="/images/product-neon.webp"
+                                alt="Neon Flex Product"
+                                className="absolute inset-0 w-full h-full object-cover rounded-3xl shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-700 hover:scale-105 z-10"
+                            />
+                        </motion.div>
+                    </div>
                 </div>
             </div>
         </div>
