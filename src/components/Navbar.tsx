@@ -118,7 +118,7 @@ const Navbar = () => {
     return (
         <nav className={`fixed w-full z-50 border-b border-white/5 ${isOpen ? 'transition-none' : 'transition-all duration-500'} ${scrolled && !isOpen ? 'bg-black/80 backdrop-blur-md py-4' : 'bg-transparent py-6'}`}>
             <div className="container-fluid flex justify-between items-center">
-                <Link to="/" className={`text-2xl font-black tracking-tighter uppercase relative z-50 transition-colors duration-300 ${isOpen || scrolled ? 'text-white' : 'text-black'}`}>
+                <Link to="/" className={`text-2xl font-black tracking-tighter uppercase relative z-50 transition-colors duration-300 ${isOpen || scrolled || location.pathname === '/' ? 'text-white' : 'text-black'}`}>
                     Publi<span className="text-[var(--color-signal-pink)]">zhen</span>.
                 </Link>
 
@@ -126,9 +126,9 @@ const Navbar = () => {
                 <div className="hidden md:flex items-center gap-8">
                     <Link
                         to="/"
-                        className={`text-sm font-bold uppercase tracking-widest transition-colors hover:text-[var(--color-signal-pink)] ${location.pathname === '/'
-                            ? (scrolled ? 'text-white' : 'text-black')
-                            : (scrolled ? 'text-white/80' : 'text-black/80')
+                        className={`text-sm font-bold uppercase tracking-widest transition-colors hover:text-[var(--color-signal-pink)] ${location.pathname === '/' || scrolled || isOpen
+                                ? 'text-white'
+                                : 'text-black/80'
                             }`}
                     >
                         Inicio
