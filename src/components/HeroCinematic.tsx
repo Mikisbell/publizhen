@@ -97,10 +97,10 @@ const HeroCinematic = () => {
                         transition={{ duration: 0.8, delay: 0.6 }}
                         className="flex flex-col sm:flex-row gap-6"
                     >
-                        <Link to="/contacto" className="btn-signal text-lg px-12 py-6 group">
+                        <a href="https://wa.me/51976277993" target="_blank" rel="noopener noreferrer" className="btn-signal text-lg px-12 py-6 group flex items-center">
                             Iniciar Proyecto
                             <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform" />
-                        </Link>
+                        </a>
                         <Link to="/productos" className="px-12 py-6 text-sm font-bold uppercase tracking-widest text-white hover:text-[var(--color-signal-pink)] transition-colors flex items-center">
                             Explorar Catálogo
                         </Link>
