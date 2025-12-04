@@ -150,10 +150,20 @@ const Navbar = () => {
                         Branding
                     </FlyoutLink>
 
-                    <Link to="/contacto" className="btn-signal relative overflow-hidden group ml-4">
+                    <Link
+                        to="/contacto"
+                        className={`text-sm font-bold uppercase tracking-widest transition-colors hover:text-[var(--color-signal-pink)] ${location.pathname === '/contacto' || scrolled
+                            ? 'text-white'
+                            : 'text-black/80'
+                            }`}
+                    >
+                        Contacto
+                    </Link>
+
+                    <a href="https://wa.me/51976277993" target="_blank" rel="noopener noreferrer" className="btn-signal relative overflow-hidden group ml-4">
                         <span className="relative z-10">Cotizar</span>
                         <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-                    </Link>
+                    </a>
                 </div>
 
                 {/* Mobile Menu Button */}
@@ -207,11 +217,21 @@ const Navbar = () => {
 
                             <Link
                                 to="/contacto"
-                                className="btn-signal text-xl w-full py-6 mt-8"
+                                className="block text-3xl font-black uppercase tracking-tighter text-white hover:text-[var(--color-signal-pink)] transition-colors"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                Contacto
+                            </Link>
+
+                            <a
+                                href="https://wa.me/51976277993"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="btn-signal text-xl w-full py-6 mt-8 flex justify-center"
                                 onClick={() => setIsOpen(false)}
                             >
                                 Cotizar Proyecto
-                            </Link>
+                            </a>
                         </div>
                     </motion.div>
                 )}
