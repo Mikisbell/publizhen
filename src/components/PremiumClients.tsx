@@ -32,7 +32,7 @@ const clients = [
 
 function Card({ client, mouseX, mouseY }: { client: any; mouseX: any; mouseY: any }) {
     return (
-        <div className="group relative h-40 w-[300px] shrink-0 overflow-hidden rounded-xl bg-neutral-900 border border-white/10">
+        <div className="group relative h-40 w-[300px] shrink-0 overflow-hidden rounded-xl bg-neutral-800 border border-white/10">
             {/* Spotlight Effect */}
             <motion.div
                 className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100"
@@ -50,7 +50,7 @@ function Card({ client, mouseX, mouseY }: { client: any; mouseX: any; mouseY: an
             {/* Content */}
             <div className="relative h-full flex flex-col items-center justify-center p-6">
                 {/* Logo */}
-                <div className="h-16 w-full flex items-center justify-center transition-all duration-500 filter grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-150">
+                <div className="h-16 w-full flex items-center justify-center transition-all duration-500 group-hover:scale-150">
                     {client.logo ? (
                         <img
                             src={client.logo}
