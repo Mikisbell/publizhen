@@ -6,35 +6,35 @@ const services = [
         description: 'Impresión de alto impacto para campañas que dominan el entorno.',
         details: ['Gigantografías', 'Rollers y Pendones', 'Backlite', 'Microperforado', 'Bastidores y Lonas'],
         color: 'var(--color-signal-pink)',
-        image: '/images/hero-new.png'
+        image: '/images/hero-new.webp'
     },
     {
         title: 'Papelería',
         description: 'Materiales corporativos que comunican profesionalismo en cada detalle.',
         details: ['Tarjetas Personales', 'Flyers y Volantes', 'Carpetas', 'Brochures', 'Credenciales', 'Calendarios'],
         color: 'var(--color-signal-orange)',
-        image: '/images/service-print.png'
+        image: '/images/service-print.webp'
     },
     {
         title: 'Señalética',
         description: 'Sistemas de orientación y rotulación para espacios comerciales e industriales.',
         details: ['Letreros Luminosos', 'Cajas de Luz', 'Señalética de Seguridad', 'Vinilos Decorativos', 'Placas'],
         color: 'var(--color-signal-yellow)',
-        image: '/images/product-neon.png'
+        image: '/images/product-neon.webp'
     },
     {
         title: 'Branding',
         description: 'Estrategia visual y diseño de identidad para marcas líderes.',
         details: ['Diseño de Logotipos', 'Identidad Corporativa', 'Manual de Marca', 'Rediseño de Marca', 'Piezas Publicitarias'],
         color: 'var(--color-signal-magenta)',
-        image: '/images/service-design.png'
+        image: '/images/service-design.webp'
     },
     {
         title: 'Merchandising',
         description: 'Artículos personalizados para potenciar tu identidad en cada interacción.',
         details: ['Regalos Corporativos', 'Textiles', 'Tecnología', 'Artículos de Oficina'],
         color: '#333',
-        image: '/images/btl-new.png'
+        image: '/images/btl-new.webp'
     }
 ];
 

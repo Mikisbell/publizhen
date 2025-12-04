@@ -7,7 +7,7 @@ const projects = [
         id: 1,
         title: "Campaña Verano 2025",
         category: "Gran Formato",
-        image: "/images/service-print.png",
+        image: "/images/service-print.webp",
         size: "col-span-1 md:col-span-2 row-span-2",
         color: "var(--color-signal-pink)"
     },
@@ -15,7 +15,7 @@ const projects = [
         id: 2,
         title: "Stand Tech Summit",
         category: "Arquitectura Efímera",
-        image: "/images/product-rollup.png",
+        image: "/images/product-rollup.webp",
         size: "col-span-1 row-span-1",
         color: "var(--color-signal-orange)"
     },
@@ -23,7 +23,7 @@ const projects = [
         id: 3,
         title: "Rebranding EcoStore",
         category: "Identidad Visual",
-        image: "/images/service-design.png",
+        image: "/images/service-design.webp",
         size: "col-span-1 row-span-1",
         color: "var(--color-signal-yellow)"
     },
@@ -31,7 +31,7 @@ const projects = [
         id: 4,
         title: "Señalética Corp.",
         category: "Instalación",
-        image: "/images/hero.png",
+        image: "/images/hero.webp",
         size: "col-span-1 md:col-span-2 row-span-1",
         color: "var(--color-signal-magenta)"
     }

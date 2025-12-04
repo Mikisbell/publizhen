@@ -6,7 +6,7 @@ const Footer = () => {
         <footer className="bg-black text-white border-t-4 border-[var(--color-signal-pink)]">
             {/* CTA Section - Global */}
             <section className="py-32 border-b border-white/10 bg-[var(--color-signal-pink)] text-white relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('/images/hero-new.png')] opacity-10 mix-blend-multiply bg-cover bg-center"></div>
+                <div className="absolute inset-0 bg-[url('/images/hero-new.webp')] opacity-10 mix-blend-multiply bg-cover bg-center"></div>
                 <div className="container-fluid text-center relative z-10">
                     <h2 className="text-5xl md:text-8xl font-black uppercase mb-8 tracking-tighter leading-[0.9]">
                         ¿Listo para <br />

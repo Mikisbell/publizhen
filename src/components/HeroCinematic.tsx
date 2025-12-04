@@ -14,7 +14,7 @@ const HeroCinematic = () => {
                     loop
                     playsInline
                     className="absolute inset-0 w-full h-full object-cover z-0"
-                    poster="/images/hero-printer.png"
+                    poster="/images/hero-printer.webp"
                 >
                     <source src="/videos/hero-background.mp4" type="video/mp4" />
                     {/* Fallback to Cinematic Motion if video fails/missing */}
@@ -35,7 +35,7 @@ const HeroCinematic = () => {
                     className="absolute inset-0 w-full h-full -z-10"
                 >
                     <img
-                        src="/images/hero-printer.png"
+                        src="/images/hero-printer.webp"
                         alt="Industrial Print Lab"
                         className="w-full h-full object-cover opacity-60"
                     />

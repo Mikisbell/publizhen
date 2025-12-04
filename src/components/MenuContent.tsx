@@ -22,7 +22,7 @@ const AnimatedIcon = ({ icon: Icon, color }: { icon: React.ElementType, color: s
 };
 
 export const ProductsContent = () => {
-    const [activeImage, setActiveImage] = useState('/images/product-rollup.png');
+    const [activeImage, setActiveImage] = useState('/images/product-rollup.webp');
     const [activeText, setActiveText] = useState('Calidad que destaca en cada impresión.');
 
     const handleHover = (image: string, text: string) => {
@@ -40,11 +40,11 @@ export const ProductsContent = () => {
                     </h3>
                     <ul className="space-y-3">
                         {[
-                            { name: 'Gigantografías', img: '/images/service-print.png', txt: 'Impacto visual a gran escala.' },
-                            { name: 'Vinilos Adhesivos', img: '/images/product-rollup.png', txt: 'Adhesivos de alta durabilidad.' },
-                            { name: 'Lonas Mesh', img: '/images/service-print.png', txt: 'Resistencia y visibilidad exterior.' },
-                            { name: 'Microperforado', img: '/images/product-rollup.png', txt: 'Privacidad sin perder luz.' },
-                            { name: 'Backlight', img: '/images/product-neon.png', txt: 'Iluminación que cautiva.' }
+                            { name: 'Gigantografías', img: '/images/service-print.webp', txt: 'Impacto visual a gran escala.' },
+                            { name: 'Vinilos Adhesivos', img: '/images/product-rollup.webp', txt: 'Adhesivos de alta durabilidad.' },
+                            { name: 'Lonas Mesh', img: '/images/service-print.webp', txt: 'Resistencia y visibilidad exterior.' },
+                            { name: 'Microperforado', img: '/images/product-rollup.webp', txt: 'Privacidad sin perder luz.' },
+                            { name: 'Backlight', img: '/images/product-neon.webp', txt: 'Iluminación que cautiva.' }
                         ].map((item) => (
                             <li key={item.name}>
                                 <Link
@@ -65,11 +65,11 @@ export const ProductsContent = () => {
                     </h3>
                     <ul className="space-y-3">
                         {[
-                            { name: 'Exhibidores', img: '/images/product-rollup.png', txt: 'Destaca tu producto en el punto de venta.' },
-                            { name: 'Stands', img: '/images/service-print.png', txt: 'Estructuras modulares para ferias.' },
-                            { name: 'Roll-ups', img: '/images/product-rollup.png', txt: 'Portabilidad y elegancia.' },
-                            { name: 'Cajas de Luz', img: '/images/product-neon.png', txt: 'Brillo que atrae miradas.' },
-                            { name: 'Señalética', img: '/images/service-design.png', txt: 'Orientación clara y estética.' }
+                            { name: 'Exhibidores', img: '/images/product-rollup.webp', txt: 'Destaca tu producto en el punto de venta.' },
+                            { name: 'Stands', img: '/images/service-print.webp', txt: 'Estructuras modulares para ferias.' },
+                            { name: 'Roll-ups', img: '/images/product-rollup.webp', txt: 'Portabilidad y elegancia.' },
+                            { name: 'Cajas de Luz', img: '/images/product-neon.webp', txt: 'Brillo que atrae miradas.' },
+                            { name: 'Señalética', img: '/images/service-design.webp', txt: 'Orientación clara y estética.' }
                         ].map((item) => (
                             <li key={item.name}>
                                 <Link
@@ -121,14 +121,14 @@ export const ProductsContent = () => {
 };
 
 export const ServicesContent = () => {
-    const [activeImage, setActiveImage] = useState('/images/service-print.png');
+    const [activeImage, setActiveImage] = useState('/images/service-print.webp');
 
     return (
         <div className="w-[700px] bg-white shadow-2xl border-t-4 border-[var(--color-signal-orange)] flex overflow-hidden rounded-b-xl">
             <div className="flex-1 p-8 grid grid-cols-1 gap-6">
                 <div
                     className="group cursor-pointer"
-                    onMouseEnter={() => setActiveImage('/images/service-print.png')}
+                    onMouseEnter={() => setActiveImage('/images/service-print.webp')}
                 >
                     <h3 className="font-black uppercase text-lg mb-2 flex items-center gap-2 group-hover:text-[var(--color-signal-orange)] transition-colors">
                         <AnimatedIcon icon={Monitor} color="text-black group-hover:text-[var(--color-signal-orange)]" />
@@ -138,7 +138,7 @@ export const ServicesContent = () => {
                 </div>
                 <div
                     className="group cursor-pointer"
-                    onMouseEnter={() => setActiveImage('/images/product-neon.png')}
+                    onMouseEnter={() => setActiveImage('/images/product-neon.webp')}
                 >
                     <h3 className="font-black uppercase text-lg mb-2 flex items-center gap-2 group-hover:text-[var(--color-signal-orange)] transition-colors">
                         <AnimatedIcon icon={Layers} color="text-black group-hover:text-[var(--color-signal-orange)]" />
@@ -173,7 +173,7 @@ export const ServicesContent = () => {
 };
 
 export const BrandingContent = () => {
-    const [activeImage, setActiveImage] = useState('/images/service-design.png');
+    const [activeImage, setActiveImage] = useState('/images/service-design.webp');
 
     return (
         <div className="w-[600px] bg-white shadow-2xl border-t-4 border-[var(--color-signal-magenta)] flex overflow-hidden rounded-b-xl">
@@ -181,7 +181,7 @@ export const BrandingContent = () => {
                 <Link
                     to="/branding"
                     className="group block"
-                    onMouseEnter={() => setActiveImage('/images/service-design.png')}
+                    onMouseEnter={() => setActiveImage('/images/service-design.webp')}
                 >
                     <h3 className="font-black uppercase text-lg mb-1 flex items-center gap-2 group-hover:text-[var(--color-signal-magenta)] transition-colors">
                         <AnimatedIcon icon={PenTool} color="text-black group-hover:text-[var(--color-signal-magenta)]" />
@@ -192,7 +192,7 @@ export const BrandingContent = () => {
                 <Link
                     to="/branding"
                     className="group block"
-                    onMouseEnter={() => setActiveImage('/images/hero.png')}
+                    onMouseEnter={() => setActiveImage('/images/hero.webp')}
                 >
                     <h3 className="font-black uppercase text-lg mb-1 flex items-center gap-2 group-hover:text-[var(--color-signal-magenta)] transition-colors">
                         <AnimatedIcon icon={Megaphone} color="text-black group-hover:text-[var(--color-signal-magenta)]" />

@@ -10,7 +10,7 @@ const categories = [
         icon: <Package size={32} />,
         color: 'var(--color-signal-pink)',
         items: ['Láminas de PVC (Celtx)', 'Vinilos Adhesivos', 'Laminados Mate/Brillo', 'Lonas Front/Back', 'Banners', 'Papeles Especiales'],
-        image: '/images/service-print.png'
+        image: '/images/service-print.webp'
     },
     {
         id: 'displays',
@@ -19,7 +19,7 @@ const categories = [
         icon: <Monitor size={32} />,
         color: 'var(--color-signal-orange)',
         items: ['Rollscreen Aluminio', 'X-banner', 'Banners con Parante', 'Módulos PVC', 'Backing de Prensa', 'Pórticos Publicitarios', 'Tótems'],
-        image: '/images/product-rollup.png'
+        image: '/images/product-rollup.webp'
     },
     {
         id: 'btl',
@@ -28,7 +28,7 @@ const categories = [
         icon: <Gamepad2 size={32} />,
         color: 'var(--color-signal-yellow)',
         items: ['Ruletas de Premio', 'Ánforas Acrílicas', 'Dados Gigantes', 'Marcos Selfie', 'Tiro al Blanco', 'Metegol MDF', 'Juegos de Memoria'],
-        image: '/images/btl-new.png'
+        image: '/images/btl-new.webp'
     },
     {
         id: 'corporeos',
@@ -37,7 +37,7 @@ const categories = [
         icon: <Layers size={32} />,
         color: 'var(--color-signal-magenta)',
         items: ['Letras Block (MDF/PVC)', 'Logos Volumétricos', 'Dummys de Producto', 'Señalética 3D', 'Corpóreos Iluminados'],
-        image: '/images/service-design.png'
+        image: '/images/service-design.webp'
     },
     {
         id: 'papeleria',
@@ -46,7 +46,7 @@ const categories = [
         icon: <Sticker size={32} />,
         color: '#333',
         items: ['Tarjetas Personales', 'Flyers y Volantes', 'Afiches', 'Magnéticos', 'Credenciales y Fotochecks', 'Calendarios', 'Talonarios', 'Etiquetas'],
-        image: '/images/service-print.png'
+        image: '/images/service-print.webp'
     },
     {
         id: 'letreros',
@@ -55,7 +55,7 @@ const categories = [
         icon: <Lightbulb size={32} />,
         color: 'var(--color-signal-pink)',
         items: ['Letreros Luminosos', 'Cajas de Luz', 'Señalética de Seguridad', 'Placas Grabadas', 'Vinilos Decorativos', 'Ploteos'],
-        image: '/images/product-neon.png'
+        image: '/images/product-neon.webp'
     }
 ];
 

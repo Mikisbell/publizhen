@@ -42,7 +42,7 @@ const HeroGrid = () => {
                 {/* 2. Visual: The Machine (Top Right) */}
                 <div className="md:col-span-4 row-span-1 relative overflow-hidden bg-gray-900 group">
                     <img
-                        src="/images/hero-printer.png"
+                        src="/images/hero-printer.webp"
                         alt="Industrial Printer Action"
                         className="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-700"
                     />
@@ -56,7 +56,7 @@ const HeroGrid = () => {
                 {/* 3. Visual: The Craft (Bottom Left) */}
                 <div className="md:col-span-5 row-span-1 relative overflow-hidden bg-gray-900 group">
                     <img
-                        src="/images/hero-craft.png"
+                        src="/images/hero-craft.webp"
                         alt="Neon Sign Craftsmanship"
                         className="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-700"
                     />
@@ -70,7 +70,7 @@ const HeroGrid = () => {
                 {/* 4. Value Prop / Texture (Bottom Center) */}
                 <div className="md:col-span-4 row-span-1 bg-[var(--color-signal-orange)] p-8 flex flex-col justify-center relative overflow-hidden">
                     <img
-                        src="/images/hero-texture.png"
+                        src="/images/hero-texture.webp"
                         alt="Texture"
                         className="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-40"
                     />

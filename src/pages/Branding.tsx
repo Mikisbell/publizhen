@@ -35,21 +35,21 @@ const Branding = () => {
                     <h3 className="text-2xl font-black uppercase mb-12 tracking-widest">Trabajos Recientes</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         <div className="aspect-square bg-black/5 flex items-center justify-center relative group overflow-hidden">
-                            <img src="/images/service-design.png" alt="Project 1" className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" />
+                            <img src="/images/service-design.webp" alt="Project 1" className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" />
                             <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
                             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10">
                                 <span className="text-white font-bold uppercase tracking-widest border border-white px-6 py-3 backdrop-blur-sm">Ver Proyecto</span>
                             </div>
                         </div>
                         <div className="aspect-square bg-black/5 flex items-center justify-center relative group overflow-hidden">
-                            <img src="/images/product-neon.png" alt="Project 2" className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" />
+                            <img src="/images/product-neon.webp" alt="Project 2" className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" />
                             <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
                             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10">
                                 <span className="text-white font-bold uppercase tracking-widest border border-white px-6 py-3 backdrop-blur-sm">Ver Proyecto</span>
                             </div>
                         </div>
                         <div className="aspect-square bg-black/5 flex items-center justify-center relative group overflow-hidden">
-                            <img src="/images/product-rollup.png" alt="Project 3" className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" />
+                            <img src="/images/product-rollup.webp" alt="Project 3" className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" />
                             <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
                             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10">
                                 <span className="text-white font-bold uppercase tracking-widest border border-white px-6 py-3 backdrop-blur-sm">Ver Proyecto</span>

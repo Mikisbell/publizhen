@@ -18,7 +18,7 @@ const Home = () => {
                     {/* Service 1 */}
                     <div className="group border-r border-b border-black/10 p-12 min-h-[600px] flex flex-col justify-between hover:bg-black hover:text-white transition-colors duration-500 relative overflow-hidden">
                         <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-40 transition-opacity duration-500">
-                            <img src="/images/service-print.png" alt="Gran Formato" className="w-full h-full object-cover grayscale" />
+                            <img src="/images/service-print.webp" alt="Gran Formato" className="w-full h-full object-cover grayscale" />
                         </div>
 
                         <div className="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-100 transition-opacity z-10 duration-500">
@@ -39,7 +39,7 @@ const Home = () => {
                     {/* Service 2 */}
                     <div className="group border-r border-b border-black/10 p-12 min-h-[600px] flex flex-col justify-between hover:bg-black hover:text-white transition-colors duration-500 relative overflow-hidden">
                         <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-40 transition-opacity duration-500">
-                            <img src="/images/product-rollup.png" alt="Displays" className="w-full h-full object-cover grayscale" />
+                            <img src="/images/product-rollup.webp" alt="Displays" className="w-full h-full object-cover grayscale" />
                         </div>
 
                         <div className="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-100 transition-opacity z-10 duration-500">
@@ -60,7 +60,7 @@ const Home = () => {
                     {/* Service 3 */}
                     <div className="group border-b border-black/10 p-12 min-h-[600px] flex flex-col justify-between hover:bg-black hover:text-white transition-colors duration-500 relative overflow-hidden">
                         <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-40 transition-opacity duration-500">
-                            <img src="/images/service-design.png" alt="Branding" className="w-full h-full object-cover grayscale" />
+                            <img src="/images/service-design.webp" alt="Branding" className="w-full h-full object-cover grayscale" />
                         </div>
 
                         <div className="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-100 transition-opacity z-10 duration-500">
