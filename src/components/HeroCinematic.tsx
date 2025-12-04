@@ -1,17 +1,11 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useState } from 'react';
 
 const HeroCinematic = () => {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [isVideoEnded, setIsVideoEnded] = useState(false);
-
-    useEffect(() => {
-        if (videoRef.current) {
-            videoRef.current.playbackRate = 0.5; // 50% speed for cinematic feel
-        }
-    }, []);
 
     return (
         <section className="relative h-screen w-full overflow-hidden bg-black text-white">
@@ -24,6 +18,11 @@ const HeroCinematic = () => {
                     muted
                     playsInline
                     className="absolute inset-0 w-full h-full object-cover z-0"
+                    onLoadedMetadata={() => {
+                        if (videoRef.current) {
+                            videoRef.current.playbackRate = 0.2; // 20% speed (Super Slow Motion)
+                        }
+                    }}
                     onEnded={() => {
                         if (videoRef.current) videoRef.current.pause();
                         setIsVideoEnded(true);
