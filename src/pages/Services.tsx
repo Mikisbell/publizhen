@@ -1,46 +1,52 @@
-// Imports removed as they were unused
+import ManifestoSection from '../components/ManifestoSection';
 
 const services = [
     {
         title: 'Gran Formato',
-        description: 'Impresión de alta resolución para campañas que dominan el espacio visual.',
-        details: ['Gigantografías', 'Vinilos', 'Lonas Mesh', 'Microperforado'],
-        color: 'var(--signal-pink)',
-        image: '/images/service-print.png'
+        description: 'Impresión de alto impacto para campañas que dominan el entorno.',
+        details: ['Gigantografías', 'Rollers y Pendones', 'Backlite', 'Microperforado', 'Bastidores y Lonas'],
+        color: 'var(--color-signal-pink)',
+        image: '/images/hero-new.png'
     },
     {
         title: 'Papelería',
         description: 'Materiales corporativos que comunican profesionalismo en cada detalle.',
-        details: ['Tarjetas', 'Flyers', 'Carpetas', 'Brochures'],
-        color: 'var(--signal-orange)',
-        image: '/images/product-rollup.png' // Placeholder reuse
+        details: ['Tarjetas Personales', 'Flyers y Volantes', 'Carpetas', 'Brochures', 'Credenciales', 'Calendarios'],
+        color: 'var(--color-signal-orange)',
+        image: '/images/service-print.png'
     },
     {
         title: 'Señalética',
         description: 'Sistemas de orientación y rotulación para espacios comerciales e industriales.',
-        details: ['Letreros Luminosos', 'Cajas de Luz', 'Señalética de Seguridad', 'Vinilo Pavimento'],
-        color: 'var(--signal-yellow)',
+        details: ['Letreros Luminosos', 'Cajas de Luz', 'Señalética de Seguridad', 'Vinilos Decorativos', 'Placas'],
+        color: 'var(--color-signal-yellow)',
         image: '/images/product-neon.png'
     },
     {
         title: 'Branding',
         description: 'Estrategia visual y diseño de identidad para marcas líderes.',
-        details: ['Logotipos', 'Manual de Marca', 'Rebranding', 'Diseño Publicitario'],
-        color: 'var(--signal-magenta)',
+        details: ['Diseño de Logotipos', 'Identidad Corporativa', 'Manual de Marca', 'Rediseño de Marca', 'Piezas Publicitarias'],
+        color: 'var(--color-signal-magenta)',
         image: '/images/service-design.png'
+    },
+    {
+        title: 'Merchandising',
+        description: 'Artículos personalizados para potenciar tu identidad en cada interacción.',
+        details: ['Regalos Corporativos', 'Textiles', 'Tecnología', 'Artículos de Oficina'],
+        color: '#333',
+        image: '/images/btl-new.png'
     }
 ];
 
 const Services = () => {
     return (
-        <div className="pt-32 pb-20 min-h-screen">
-            <div className="container-fluid mb-20">
-                <h1 className="text-[8vw] leading-none font-black uppercase tracking-tighter mb-4">
-                    Servicios <span className="text-[var(--signal-pink)]">.</span>
+        <div className="pt-0 pb-20 min-h-screen">
+            <ManifestoSection />
+
+            <div className="container-fluid mb-20 mt-20">
+                <h1 className="text-[var(--text-display)] leading-none font-black uppercase tracking-tighter mb-4">
+                    Servicios <span className="text-[var(--color-signal-pink)]">.</span>
                 </h1>
-                <p className="text-xl font-medium text-black/60 max-w-2xl border-l-2 border-black pl-6">
-                    Capacidades industriales al servicio de tu creatividad.
-                </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 border-t border-black/10">
@@ -49,7 +55,7 @@ const Services = () => {
                         {/* Image Background */}
                         <div className="absolute inset-0">
                             <img src={service.image} alt={service.title} className="w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-105 group-hover:scale-100" />
-                            <div className="absolute inset-0 bg-[var(--canvas)] group-hover:bg-black/80 transition-colors duration-500" />
+                            <div className="absolute inset-0 bg-[var(--color-canvas)] group-hover:bg-black/80 transition-colors duration-500" />
                         </div>
 
                         <div className="absolute top-8 right-8 w-12 h-12 rounded-full border-2 border-black/10 flex items-center justify-center font-bold text-sm z-10 group-hover:border-white group-hover:text-white transition-colors">

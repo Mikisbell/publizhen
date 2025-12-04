@@ -1,4 +1,6 @@
-import { Package, Monitor, Gamepad2, Layers, ArrowUpRight } from 'lucide-react';
+import { useState } from 'react';
+import { Package, Monitor, Gamepad2, Layers, ArrowUpRight, Sticker, Lightbulb } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const categories = [
     {
@@ -6,8 +8,8 @@ const categories = [
         title: 'Materiales',
         subtitle: 'Insumos de Producción',
         icon: <Package size={32} />,
-        color: 'var(--signal-pink)',
-        items: ['Láminas de PVC (Celtx)', 'Vinilos Adhesivos', 'Laminados Mate/Brillo', 'Lonas Front/Back'],
+        color: 'var(--color-signal-pink)',
+        items: ['Láminas de PVC (Celtx)', 'Vinilos Adhesivos', 'Laminados Mate/Brillo', 'Lonas Front/Back', 'Banners', 'Papeles Especiales'],
         image: '/images/service-print.png'
     },
     {
@@ -15,80 +17,136 @@ const categories = [
         title: 'Displays',
         subtitle: 'Sistemas de Exhibición',
         icon: <Monitor size={32} />,
-        color: 'var(--signal-orange)',
-        items: ['Rollscreen Aluminio', 'X-banner', 'Módulos PVC', 'Backing de Prensa', 'Pórticos Publicitarios'],
+        color: 'var(--color-signal-orange)',
+        items: ['Rollscreen Aluminio', 'X-banner', 'Banners con Parante', 'Módulos PVC', 'Backing de Prensa', 'Pórticos Publicitarios', 'Tótems'],
         image: '/images/product-rollup.png'
     },
     {
         id: 'btl',
-        title: 'Activación BTL',
-        subtitle: 'Juegos y Dinámicas',
+        title: 'Juegos BTL',
+        subtitle: 'Dinámicas de Activación',
         icon: <Gamepad2 size={32} />,
-        color: 'var(--signal-yellow)',
-        items: ['Ruletas de Premio', 'Ánforas Acrílicas', 'Dados Gigantes', 'Marcos Selfie', 'Juegos de Memoria'],
-        image: '/images/product-neon.png'
+        color: 'var(--color-signal-yellow)',
+        items: ['Ruletas de Premio', 'Ánforas Acrílicas', 'Dados Gigantes', 'Marcos Selfie', 'Tiro al Blanco', 'Metegol MDF', 'Juegos de Memoria'],
+        image: '/images/btl-new.png'
     },
     {
         id: 'corporeos',
         title: 'Corpóreos',
         subtitle: 'Volumetría y 3D',
         icon: <Layers size={32} />,
-        color: 'var(--signal-magenta)',
-        items: ['Letras Block (MDF/PVC)', 'Logos Volumétricos', 'Dummys de Producto', 'Señalética 3D'],
+        color: 'var(--color-signal-magenta)',
+        items: ['Letras Block (MDF/PVC)', 'Logos Volumétricos', 'Dummys de Producto', 'Señalética 3D', 'Corpóreos Iluminados'],
         image: '/images/service-design.png'
+    },
+    {
+        id: 'papeleria',
+        title: 'Papelería',
+        subtitle: 'Identidad Corporativa',
+        icon: <Sticker size={32} />,
+        color: '#333',
+        items: ['Tarjetas Personales', 'Flyers y Volantes', 'Afiches', 'Magnéticos', 'Credenciales y Fotochecks', 'Calendarios', 'Talonarios', 'Etiquetas'],
+        image: '/images/service-print.png'
+    },
+    {
+        id: 'letreros',
+        title: 'Señalética',
+        subtitle: 'Visibilidad Permanente',
+        icon: <Lightbulb size={32} />,
+        color: 'var(--color-signal-pink)',
+        items: ['Letreros Luminosos', 'Cajas de Luz', 'Señalética de Seguridad', 'Placas Grabadas', 'Vinilos Decorativos', 'Ploteos'],
+        image: '/images/product-neon.png'
     }
 ];
 
 const Products = () => {
+    const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
+
     return (
-        <div className="pt-32 pb-20 min-h-screen">
-            <div className="container-fluid mb-20">
-                <h1 className="text-[8vw] leading-none font-black uppercase tracking-tighter mb-4">
-                    Catálogo <span className="text-[var(--signal-orange)]">.</span>
+        <div className="pt-32 pb-20 min-h-screen bg-[var(--color-canvas)] relative">
+            <div className="container-fluid mb-20 relative z-10">
+                <h1 className="text-[var(--text-display)] leading-none font-black uppercase tracking-tighter mb-4 mix-blend-multiply">
+                    Catálogo <span className="text-[var(--color-signal-orange)]">.</span>
                 </h1>
                 <p className="text-xl font-medium text-black/60 max-w-2xl border-l-2 border-black pl-6">
                     Herramientas físicas para potenciar tu comunicación visual.
                 </p>
             </div>
 
-            <div className="border-t border-black/10">
+            <div className="border-t border-black relative z-10">
                 {categories.map((category, index) => (
-                    <div key={category.id} className="group border-b border-black/10 hover:bg-white transition-colors duration-500 overflow-hidden relative">
-                        {/* Subtle Background Image on Hover */}
-                        <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none">
-                            <img src={category.image} alt={category.title} className="w-full h-full object-cover" />
-                        </div>
+                    <motion.div
+                        key={category.id}
+                        className="group border-b border-black/10 relative overflow-hidden cursor-pointer"
+                        onMouseEnter={() => setHoveredCategory(category.id)}
+                        onMouseLeave={() => setHoveredCategory(null)}
+                        initial="rest"
+                        whileHover="hover"
+                        animate="rest"
+                    >
+                        {/* Background Reveal */}
+                        <motion.div
+                            className="absolute inset-0 z-0 bg-black"
+                            variants={{
+                                rest: { opacity: 0 },
+                                hover: { opacity: 1 }
+                            }}
+                            transition={{ duration: 0.3 }}
+                        />
 
-                        <div className="container-fluid py-16 grid grid-cols-1 lg:grid-cols-12 gap-8 relative z-10">
+                        {/* Image Reveal on Hover (Large, Fixed or Absolute) */}
+                        <AnimatePresence>
+                            {hoveredCategory === category.id && (
+                                <motion.div
+                                    className="absolute right-0 top-0 h-full w-1/2 z-0 hidden lg:block pointer-events-none opacity-50 mix-blend-luminosity"
+                                    initial={{ x: 100, opacity: 0 }}
+                                    animate={{ x: 0, opacity: 0.4 }}
+                                    exit={{ x: 100, opacity: 0 }}
+                                    transition={{ duration: 0.4, ease: "easeOut" }}
+                                >
+                                    <img src={category.image} alt={category.title} className="w-full h-full object-cover" />
+                                    <div className="absolute inset-0 bg-gradient-to-l from-transparent to-black" />
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+
+                        <div className="container-fluid py-12 grid grid-cols-1 lg:grid-cols-12 gap-8 relative z-10">
                             {/* Header */}
-                            <div className="lg:col-span-4 flex flex-col justify-between">
-                                <div>
-                                    <span className="text-sm font-bold uppercase tracking-widest text-black/40 mb-2 block">0{index + 1}</span>
-                                    <h2 className="text-5xl font-black uppercase mb-2 group-hover:text-[var(--ink)] transition-colors" style={{ color: category.color }}>
+                            <div className="lg:col-span-5 flex flex-col justify-center">
+                                <div className="flex items-baseline gap-4">
+                                    <span className="text-sm font-bold uppercase tracking-widest text-black/40 group-hover:text-white/40 mb-2 block transition-colors">0{index + 1}</span>
+                                    <h2 className="text-6xl font-black uppercase mb-2 text-black group-hover:text-white transition-colors duration-300">
                                         {category.title}
                                     </h2>
-                                    <p className="text-lg font-medium text-black/60">{category.subtitle}</p>
                                 </div>
-                                <div className="mt-8 lg:mt-0 hidden lg:block opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                                    <ArrowUpRight size={48} style={{ color: category.color }} />
-                                </div>
+                                <p className="text-lg font-medium text-black/60 group-hover:text-[var(--color-signal-orange)] transition-colors pl-10">{category.subtitle}</p>
                             </div>
 
-                            {/* Items Grid */}
-                            <div className="lg:col-span-8">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+                            {/* Items Grid - Auto Reveal */}
+                            <div className="lg:col-span-7 flex items-center">
+                                <motion.div
+                                    className="flex flex-wrap gap-3"
+                                    variants={{
+                                        rest: { opacity: 0.6 },
+                                        hover: { opacity: 1 }
+                                    }}
+                                >
                                     {category.items.map((item, idx) => (
-                                        <div key={idx} className="flex items-center border-b border-black/5 pb-4 group/item">
-                                            <div className="w-2 h-2 rounded-full mr-4 transition-all duration-300 group-hover/item:scale-150" style={{ backgroundColor: category.color }}></div>
-                                            <span className="text-xl font-bold text-black/80 group-hover/item:text-black transition-colors">
-                                                {item}
-                                            </span>
-                                        </div>
+                                        <span
+                                            key={idx}
+                                            className="px-4 py-2 border border-black/10 bg-white/50 text-sm font-bold uppercase tracking-wider text-black group-hover:bg-transparent group-hover:border-white/30 group-hover:text-white transition-all duration-300"
+                                        >
+                                            {item}
+                                        </span>
                                     ))}
-                                </div>
+                                </motion.div>
+                            </div>
+
+                            <div className="absolute right-8 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[var(--color-signal-orange)]">
+                                <ArrowUpRight size={64} />
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                 ))}
             </div>
         </div>
