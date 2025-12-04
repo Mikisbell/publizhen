@@ -1,18 +1,25 @@
 import { motion } from 'framer-motion';
+import {
+    BCPLogo, InterbankLogo, AlicorpLogo, GloriaLogo, BackusLogo, FerreyrosLogo,
+    BBVALogo, ScotiabankLogo, PrimaxLogo, PacasmayoLogo, AjeLogo, GrañaLogo, PlaceholderLogo
+} from './BrandLogos';
 
 const clients = [
-    "BANCO DE CRÉDITO",
-    "INTERBANK",
-    "ALICORP",
-    "GLORIA",
-    "BACKUS",
-    "FERREYROS",
-    "BBVA",
-    "SCOTIABANK",
-    "PRIMAX",
-    "CEMENTOS PACASMAYO",
-    "AJE GROUP",
-    "GRAÑA Y MONTERO"
+    { name: "BANCO DE CRÉDITO", Logo: BCPLogo },
+    { name: "INTERBANK", Logo: InterbankLogo },
+    { name: "ALICORP", Logo: AlicorpLogo },
+    { name: "GLORIA", Logo: GloriaLogo },
+    { name: "BACKUS", Logo: BackusLogo },
+    { name: "FERREYROS", Logo: FerreyrosLogo },
+    { name: "BBVA", Logo: BBVALogo },
+    { name: "SCOTIABANK", Logo: ScotiabankLogo },
+    { name: "PRIMAX", Logo: PrimaxLogo },
+    { name: "CEMENTOS PACASMAYO", Logo: PacasmayoLogo },
+    { name: "AJE GROUP", Logo: AjeLogo },
+    { name: "GRAÑA Y MONTERO", Logo: GrañaLogo },
+    { name: "FREECLOUD", Logo: () => <PlaceholderLogo text="FREECLOUD" /> },
+    { name: "JUNTAY", Logo: () => <PlaceholderLogo text="JUNTAY" /> },
+    { name: "RIVAMEZ", Logo: () => <PlaceholderLogo text="RIVAMEZ" /> }
 ];
 
 const ClientsSection = () => {
@@ -26,36 +33,27 @@ const ClientsSection = () => {
 
             <div className="relative flex overflow-x-hidden group">
                 <motion.div
-                    className="flex whitespace-nowrap gap-20 animate-marquee"
+                    className="flex whitespace-nowrap gap-32 animate-marquee items-center"
                     animate={{ x: ["0%", "-50%"] }}
                     transition={{
                         repeat: Infinity,
                         ease: "linear",
-                        duration: 30
+                        duration: 60 // Slower animation
                     }}
                 >
                     {[...clients, ...clients].map((client, index) => (
-                        <span
-                            key={index}
-                            className="text-6xl md:text-8xl font-black uppercase tracking-tighter text-black opacity-80 hover:opacity-100 transition-opacity cursor-default"
-                            style={{ WebkitTextStroke: "2px black", color: "transparent" }}
-                        >
-                            {client}
-                        </span>
+                        <div key={index} className="flex flex-col items-center justify-center gap-6 shrink-0">
+                            <span
+                                className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-black opacity-80 hover:opacity-100 transition-opacity cursor-default"
+                                style={{ WebkitTextStroke: "1px black", color: "transparent" }}
+                            >
+                                {client.name}
+                            </span>
+                            <div className="opacity-80 hover:opacity-100 transition-opacity scale-125">
+                                <client.Logo />
+                            </div>
+                        </div>
                     ))}
-                </motion.div>
-
-                <motion.div
-                    className="flex whitespace-nowrap gap-20 absolute top-0 left-0 animate-marquee2"
-                    animate={{ x: ["0%", "-50%"] }}
-                    transition={{
-                        repeat: Infinity,
-                        ease: "linear",
-                        duration: 30
-                    }}
-                    style={{ display: 'none' }} // Fallback/Duplicate handling handled by single motion div above for simplicity
-                >
-                    {/* Redundant for simple Framer Motion loop */}
                 </motion.div>
             </div>
         </section>
