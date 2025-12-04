@@ -1,25 +1,22 @@
 import { motion } from 'framer-motion';
-import {
-    BCPLogo, InterbankLogo, AlicorpLogo, GloriaLogo, BackusLogo, FerreyrosLogo,
-    BBVALogo, ScotiabankLogo, PrimaxLogo, PacasmayoLogo, AjeLogo, GrañaLogo, PlaceholderLogo
-} from './BrandLogos';
+import { PlaceholderLogo } from './BrandLogos';
 
 const clients = [
-    { name: "BANCO DE CRÉDITO", Logo: BCPLogo },
-    { name: "INTERBANK", Logo: InterbankLogo },
-    { name: "ALICORP", Logo: AlicorpLogo },
-    { name: "GLORIA", Logo: GloriaLogo },
-    { name: "BACKUS", Logo: BackusLogo },
-    { name: "FERREYROS", Logo: FerreyrosLogo },
-    { name: "BBVA", Logo: BBVALogo },
-    { name: "SCOTIABANK", Logo: ScotiabankLogo },
-    { name: "PRIMAX", Logo: PrimaxLogo },
-    { name: "CEMENTOS PACASMAYO", Logo: PacasmayoLogo },
-    { name: "AJE GROUP", Logo: AjeLogo },
-    { name: "GRAÑA Y MONTERO", Logo: GrañaLogo },
-    { name: "FREECLOUD", Logo: () => <PlaceholderLogo text="FREECLOUD" /> },
-    { name: "JUNTAY", Logo: () => <PlaceholderLogo text="JUNTAY" /> },
-    { name: "RIVAMEZ", Logo: () => <PlaceholderLogo text="RIVAMEZ" /> }
+    { name: "BANCO DE CRÉDITO", logo: "/images/clients/bcp.png" },
+    { name: "INTERBANK", logo: "/images/clients/interbank.png" },
+    { name: "ALICORP", logo: "/images/clients/alicorp.png" },
+    { name: "GLORIA", logo: "/images/clients/gloria.png" },
+    { name: "BACKUS", logo: "/images/clients/backus.png" },
+    { name: "FERREYROS", logo: "/images/clients/ferreyros.png" },
+    { name: "BBVA", logo: "/images/clients/bbva.png" },
+    { name: "SCOTIABANK", logo: "/images/clients/scotiabank.png" },
+    { name: "PRIMAX", logo: "/images/clients/primax.png" },
+    { name: "CEMENTOS PACASMAYO", logo: "/images/clients/pacasmayo.png" },
+    { name: "AJE GROUP", logo: "/images/clients/aje.png" },
+    { name: "AENZA (G&M)", logo: "/images/clients/aenza.png" },
+    { name: "FREECLOUD", Component: () => <PlaceholderLogo text="FREECLOUD" /> },
+    { name: "JUNTAY", Component: () => <PlaceholderLogo text="JUNTAY" /> },
+    { name: "RIVAMEZ", Component: () => <PlaceholderLogo text="RIVAMEZ" /> }
 ];
 
 const ClientsSection = () => {
@@ -49,8 +46,12 @@ const ClientsSection = () => {
                             >
                                 {client.name}
                             </span>
-                            <div className="opacity-80 hover:opacity-100 transition-opacity scale-125">
-                                <client.Logo />
+                            <div className="opacity-80 hover:opacity-100 transition-opacity scale-125 h-16 flex items-center justify-center">
+                                {client.logo ? (
+                                    <img src={client.logo} alt={client.name} className="h-full w-auto object-contain mix-blend-multiply" />
+                                ) : (
+                                    client.Component && <client.Component />
+                                )}
                             </div>
                         </div>
                     ))}
