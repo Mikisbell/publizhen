@@ -30,12 +30,12 @@ const ClientsSection = () => {
 
             <div className="relative flex overflow-x-hidden group">
                 <motion.div
-                    className="flex whitespace-nowrap gap-32 animate-marquee items-center"
+                    className="flex whitespace-nowrap gap-32 items-center"
                     animate={{ x: ["0%", "-50%"] }}
                     transition={{
                         repeat: Infinity,
                         ease: "linear",
-                        duration: 120 // Slower animation
+                        duration: 300 // Slower animation
                     }}
                 >
                     {[...clients, ...clients].map((client, index) => (
