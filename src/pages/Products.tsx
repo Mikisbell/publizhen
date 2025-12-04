@@ -13,7 +13,7 @@ const categories = [
         icon: <Package size={32} />,
         color: 'var(--color-signal-pink)',
         items: ['Láminas de PVC (Celtx)', 'Vinilos Adhesivos', 'Laminados Mate/Brillo', 'Lonas Front/Back', 'Banners', 'Papeles Especiales'],
-        image: '/images/service-print.webp'
+        image: '/images/category-materiales.png'
     },
     {
         id: 'displays',
@@ -22,7 +22,7 @@ const categories = [
         icon: <Monitor size={32} />,
         color: 'var(--color-signal-orange)',
         items: ['Rollscreen Aluminio', 'X-banner', 'Banners con Parante', 'Módulos PVC', 'Backing de Prensa', 'Pórticos Publicitarios', 'Tótems'],
-        image: '/images/product-rollup.webp'
+        image: '/images/category-displays.png'
     },
     {
         id: 'btl',
@@ -31,7 +31,7 @@ const categories = [
         icon: <Gamepad2 size={32} />,
         color: 'var(--color-signal-yellow)',
         items: ['Ruletas de Premio', 'Ánforas Acrílicas', 'Dados Gigantes', 'Marcos Selfie', 'Tiro al Blanco', 'Metegol MDF', 'Juegos de Memoria'],
-        image: '/images/btl-new.webp'
+        image: '/images/category-btl.png'
     },
     {
         id: 'corporeos',
@@ -40,7 +40,7 @@ const categories = [
         icon: <Layers size={32} />,
         color: 'var(--color-signal-magenta)',
         items: ['Letras Block (MDF/PVC)', 'Logos Volumétricos', 'Dummys de Producto', 'Señalética 3D', 'Corpóreos Iluminados'],
-        image: '/images/service-design.webp'
+        image: '/images/category-corporeos.png'
     },
     {
         id: 'papeleria',
@@ -49,7 +49,7 @@ const categories = [
         icon: <Sticker size={32} />,
         color: '#333',
         items: ['Tarjetas Personales', 'Flyers y Volantes', 'Afiches', 'Magnéticos', 'Credenciales y Fotochecks', 'Calendarios', 'Talonarios', 'Etiquetas'],
-        image: '/images/service-print.webp'
+        image: '/images/category-papeleria.png'
     },
     {
         id: 'letreros',
@@ -58,7 +58,7 @@ const categories = [
         icon: <Lightbulb size={32} />,
         color: 'var(--color-signal-pink)',
         items: ['Letreros Luminosos', 'Cajas de Luz', 'Señalética de Seguridad', 'Placas Grabadas', 'Vinilos Decorativos', 'Ploteos'],
-        image: '/images/product-neon.webp'
+        image: '/images/category-senaletica.png'
     }
 ];
 
@@ -80,7 +80,7 @@ const Products = () => {
                 product={selectedProduct}
             />
 
-            <div className="container-fluid mb-20 relative z-10">
+            <div className="container-fluid mb-8 relative z-10">
                 <h1 className="text-[var(--text-display)] leading-none font-black uppercase tracking-tighter mb-4 mix-blend-multiply">
                     Catálogo <span className="text-[var(--color-signal-orange)]">.</span>
                 </h1>

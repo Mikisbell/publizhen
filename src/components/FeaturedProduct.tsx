@@ -3,7 +3,7 @@ import { ArrowRight, Zap, Shield, Leaf } from 'lucide-react';
 
 const FeaturedProduct = () => {
     return (
-        <div className="container-fluid py-20">
+        <div className="container-fluid py-8">
             <div className="relative rounded-[2.5rem] bg-[#0a0a0a] overflow-hidden text-white shadow-2xl">
                 {/* Background Glow */}
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[var(--signal-pink)] rounded-full blur-[150px] opacity-20 pointer-events-none -translate-y-1/2 translate-x-1/2" />
