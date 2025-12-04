@@ -1,20 +1,33 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useRef, useEffect } from 'react';
 
 const HeroCinematic = () => {
+    const videoRef = useRef<HTMLVideoElement>(null);
+
+    useEffect(() => {
+        if (videoRef.current) {
+            videoRef.current.playbackRate = 0.5; // 50% speed for cinematic feel
+        }
+    }, []);
+
     return (
         <section className="relative h-screen w-full overflow-hidden bg-black text-white">
             {/* 1. Background Visual - The "Hero" */}
             <div className="absolute inset-0 z-0">
                 {/* Video Background with Fallback */}
                 <video
+                    ref={videoRef}
                     autoPlay
                     muted
-                    loop
                     playsInline
                     className="absolute inset-0 w-full h-full object-cover z-0"
                     poster="/images/hero-printer.webp"
+                    onEnded={() => {
+                        // Optional: Ensure it stays paused at the end (default behavior, but explicit is safer)
+                        if (videoRef.current) videoRef.current.pause();
+                    }}
                 >
                     <source src="/images/Video.mp4" type="video/mp4" />
                     {/* Fallback to Cinematic Motion if video fails/missing */}
