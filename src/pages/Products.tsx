@@ -13,12 +13,12 @@ const categories = [
         icon: <Package size={32} />,
         color: 'var(--color-signal-pink)',
         items: [
-            { name: 'Láminas de PVC (Celtx)' },
-            { name: 'Vinilos Adhesivos' },
-            { name: 'Laminados Mate/Brillo' },
-            { name: 'Lonas Front/Back' },
-            { name: 'Banners' },
-            { name: 'Papeles Especiales' }
+            { name: 'Láminas de PVC (Celtx)', image: '/images/item-pvc.png' },
+            { name: 'Vinilos Adhesivos', image: '/images/item-vinilos.png' },
+            { name: 'Laminados Mate/Brillo', image: '/images/item-laminados.png' },
+            { name: 'Lonas Front/Back', image: '/images/item-lonas.png' },
+            { name: 'Banners', image: '/images/item-banners-mat.png' },
+            { name: 'Papeles Especiales', image: '/images/item-papeles.png' }
         ],
         image: '/images/category-materiales.png'
     },
@@ -29,13 +29,13 @@ const categories = [
         icon: <Monitor size={32} />,
         color: 'var(--color-signal-orange)',
         items: [
-            { name: 'Rollscreen Aluminio' },
-            { name: 'X-banner' },
-            { name: 'Banners con Parante' },
-            { name: 'Módulos PVC' },
-            { name: 'Backing de Prensa' },
-            { name: 'Pórticos Publicitarios' },
-            { name: 'Tótems' }
+            { name: 'Rollscreen Aluminio', image: '/images/item-rollscreen.png' },
+            { name: 'X-banner', image: '/images/item-xbanner.png' },
+            { name: 'Banners con Parante', image: '/images/item-parante.png' },
+            { name: 'Módulos PVC', image: '/images/item-modulos.png' },
+            { name: 'Backing de Prensa', image: '/images/item-backing.png' },
+            { name: 'Pórticos Publicitarios', image: '/images/item-porticos.png' },
+            { name: 'Tótems', image: '/images/item-totems.png' }
         ],
         image: '/images/category-displays.png'
     },
@@ -46,13 +46,13 @@ const categories = [
         icon: <Gamepad2 size={32} />,
         color: 'var(--color-signal-yellow)',
         items: [
-            { name: 'Ruletas de Premio' },
-            { name: 'Ánforas Acrílicas' },
-            { name: 'Dados Gigantes' },
-            { name: 'Marcos Selfie' },
-            { name: 'Tiro al Blanco' },
-            { name: 'Metegol MDF' },
-            { name: 'Juegos de Memoria' }
+            { name: 'Ruletas de Premio', image: '/images/item-ruletas.png' },
+            { name: 'Ánforas Acrílicas', image: '/images/item-anforas.png' },
+            { name: 'Dados Gigantes', image: '/images/item-dados.png' },
+            { name: 'Marcos Selfie', image: '/images/item-marcos.png' },
+            { name: 'Tiro al Blanco', image: '/images/item-tiro.png' },
+            { name: 'Metegol MDF', image: '/images/item-metegol.png' },
+            { name: 'Juegos de Memoria', image: '/images/item-memoria.png' }
         ],
         image: '/images/category-btl.png'
     },
@@ -63,11 +63,11 @@ const categories = [
         icon: <Layers size={32} />,
         color: 'var(--color-signal-magenta)',
         items: [
-            { name: 'Letras Block (MDF/PVC)' },
-            { name: 'Logos Volumétricos' },
-            { name: 'Dummys de Producto' },
-            { name: 'Señalética 3D' },
-            { name: 'Corpóreos Iluminados' }
+            { name: 'Letras Block (MDF/PVC)', image: '/images/item-letras.png' },
+            { name: 'Logos Volumétricos', image: '/images/item-logos.png' },
+            { name: 'Dummys de Producto', image: '/images/item-dummys.png' },
+            { name: 'Señalética 3D', image: '/images/item-senaletica3d.png' },
+            { name: 'Corpóreos Iluminados', image: '/images/item-corporeos.png' }
         ],
         image: '/images/category-corporeos.png'
     },
@@ -79,13 +79,13 @@ const categories = [
         color: '#333',
         items: [
             { name: 'Tarjetas Personales', image: '/images/item-tarjetas.png' },
-            { name: 'Flyers y Volantes' },
-            { name: 'Afiches' },
-            { name: 'Magnéticos' },
-            { name: 'Credenciales y Fotochecks' },
-            { name: 'Calendarios' },
-            { name: 'Talonarios' },
-            { name: 'Etiquetas' }
+            { name: 'Flyers y Volantes', image: '/images/item-flyers.png' },
+            { name: 'Afiches', image: '/images/item-afiches.png' },
+            { name: 'Magnéticos', image: '/images/item-magneticos.png' },
+            { name: 'Credenciales y Fotochecks', image: '/images/item-credenciales.png' },
+            { name: 'Calendarios', image: '/images/item-calendarios.png' },
+            { name: 'Talonarios', image: '/images/item-talonarios.png' },
+            { name: 'Etiquetas', image: '/images/item-etiquetas.png' }
         ],
         image: '/images/category-papeleria.png'
     },
@@ -96,12 +96,12 @@ const categories = [
         icon: <Lightbulb size={32} />,
         color: 'var(--color-signal-pink)',
         items: [
-            { name: 'Letreros Luminosos' },
-            { name: 'Cajas de Luz' },
-            { name: 'Señalética de Seguridad' },
-            { name: 'Placas Grabadas' },
-            { name: 'Vinilos Decorativos' },
-            { name: 'Ploteos' }
+            { name: 'Letreros Luminosos', image: '/images/item-letreros.png' },
+            { name: 'Cajas de Luz', image: '/images/item-cajas.png' },
+            { name: 'Señalética de Seguridad', image: '/images/item-seguridad.png' },
+            { name: 'Placas Grabadas', image: '/images/item-placas.png' },
+            { name: 'Vinilos Decorativos', image: '/images/item-vinilos-dec.png' },
+            { name: 'Ploteos', image: '/images/item-ploteos.png' }
         ],
         image: '/images/category-senaletica.png'
     }
@@ -110,13 +110,26 @@ const categories = [
 const Products = () => {
     const [selectedProduct, setSelectedProduct] = useState<any>(null);
 
+    const featuredProductData = {
+        id: 'neon-flex',
+        title: 'Neon Flex Ultra 2.0',
+        subtitle: 'New Arrival 2025',
+        image: '/images/product-neon.webp',
+        items: [
+            { name: 'Voltaje: 12V DC' },
+            { name: 'Protección: IP67 (Waterproof)' },
+            { name: 'Material: Silicón 100% Reciclable' },
+            { name: 'Vida Útil: 50,000 Horas' },
+            { name: 'Corte: Cada 2.5 cm' },
+            { name: 'Colores: RGB, Pixel, Monocromático' }
+        ]
+    };
+
     return (
         <div className="pt-32 pb-20 min-h-screen bg-[var(--color-canvas)] relative">
             <SEO
-                title="Catálogo de Productos Publicitarios"
-                description="Displays, Roll Screens, Juegos BTL, Corpóreos 3D y Materiales de Impresión. Todo lo que necesitas para activar tu marca en el punto de venta."
-                keywords="Displays Publicitarios, Roll Screen, Módulos BTL, Juegos BTL, Ruletas Publicitarias, Corpóreos 3D, Materiales Publicitarios"
-                url="/productos"
+                title="Productos | Publizhen"
+                description="Catálogo completo de soluciones publicitarias: Neon Flex, Gigantografías, Merchandising y más."
             />
 
             <ProductModal
@@ -129,13 +142,10 @@ const Products = () => {
                 <h1 className="text-[var(--text-display)] leading-none font-black uppercase tracking-tighter mb-4 mix-blend-multiply">
                     Catálogo <span className="text-[var(--color-signal-orange)]">.</span>
                 </h1>
-                <p className="text-xl font-medium text-black/60 max-w-2xl border-l-2 border-black pl-6">
-                    Herramientas físicas para potenciar tu comunicación visual.
-                </p>
             </div>
 
             {/* Featured Product Section */}
-            <FeaturedProduct />
+            <FeaturedProduct onOpenSpecs={() => setSelectedProduct(featuredProductData)} />
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-black/10 border-t border-black/10">
                 {categories.map((category, index) => (

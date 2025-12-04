@@ -1,7 +1,11 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Zap, Shield, Leaf } from 'lucide-react';
 
-const FeaturedProduct = () => {
+interface FeaturedProductProps {
+    onOpenSpecs: () => void;
+}
+
+const FeaturedProduct = ({ onOpenSpecs }: FeaturedProductProps) => {
     return (
         <div className="container-fluid py-8">
             <div className="relative rounded-[2.5rem] bg-[#0a0a0a] overflow-hidden text-white shadow-2xl">
@@ -47,7 +51,10 @@ const FeaturedProduct = () => {
                             </div>
                         </div>
 
-                        <button className="group flex items-center gap-4 bg-white text-black px-8 py-4 rounded-xl font-bold uppercase tracking-wider hover:bg-[var(--signal-pink)] hover:text-white transition-all duration-300">
+                        <button
+                            onClick={onOpenSpecs}
+                            className="group flex items-center gap-4 bg-white text-black px-8 py-4 rounded-xl font-bold uppercase tracking-wider hover:bg-[var(--signal-pink)] hover:text-white transition-all duration-300"
+                        >
                             Ver Especificaciones
                             <ArrowRight className="group-hover:translate-x-1 transition-transform" />
                         </button>
