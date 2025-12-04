@@ -50,7 +50,7 @@ function Card({ client, mouseX, mouseY }: { client: any; mouseX: any; mouseY: an
             {/* Content */}
             <div className="relative h-full flex flex-col items-center justify-center p-6">
                 {/* Logo */}
-                <div className="h-16 w-full flex items-center justify-center transition-all duration-500 filter grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110">
+                <div className="h-16 w-full flex items-center justify-center transition-all duration-500 filter grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-150">
                     {client.logo ? (
                         <img
                             src={client.logo}
@@ -89,8 +89,10 @@ function ParallaxText({ children, baseVelocity = 100 }: { children: any; baseVel
 
     const directionFactor = useRef<number>(1);
     const isDragging = useRef(false);
+    const isHovered = useRef(false);
+
     useAnimationFrame((_, delta) => {
-        if (isDragging.current) return;
+        if (isDragging.current || isHovered.current) return;
 
         let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
 
@@ -110,6 +112,8 @@ function ParallaxText({ children, baseVelocity = 100 }: { children: any; baseVel
             <motion.div
                 className="scroller flex flex-nowrap gap-8 cursor-grab active:cursor-grabbing"
                 style={{ x }}
+                onMouseEnter={() => isHovered.current = true}
+                onMouseLeave={() => isHovered.current = false}
                 onPanStart={() => isDragging.current = true}
                 onPanEnd={() => isDragging.current = false}
                 onPan={(_, info) => {
