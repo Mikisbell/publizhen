@@ -35,7 +35,7 @@ const ClientsSection = () => {
                     transition={{
                         repeat: Infinity,
                         ease: "linear",
-                        duration: 60 // Slower animation
+                        duration: 120 // Slower animation
                     }}
                 >
                     {[...clients, ...clients].map((client, index) => (
