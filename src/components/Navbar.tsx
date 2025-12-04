@@ -125,6 +125,9 @@ const Navbar = () => {
         </Link>
     );
 
+    const isDarkPage = location.pathname === '/' || location.pathname === '/servicios';
+    const shouldUseWhiteText = isDarkPage || scrolled;
+
     return (
         <nav className={`fixed w-full z-50 border-b border-white/5 ${isOpen ? 'transition-none' : 'transition-all duration-500'} ${scrolled && !isOpen ? 'bg-black/80 backdrop-blur-md py-4' : 'bg-transparent py-6'}`}>
             <div className="container-fluid flex justify-between items-center">
@@ -138,23 +141,23 @@ const Navbar = () => {
 
                 {/* Desktop Menu */}
                 <div className="hidden md:flex items-center gap-8">
-                    <NavLink to="/" whiteText={location.pathname === '/' || scrolled}>
+                    <NavLink to="/" whiteText={shouldUseWhiteText}>
                         Inicio
                     </NavLink>
 
-                    <FlyoutLink href="/productos" FlyoutContent={ProductsContent} whiteText={location.pathname === '/' || scrolled}>
+                    <FlyoutLink href="/productos" FlyoutContent={ProductsContent} whiteText={shouldUseWhiteText}>
                         Productos
                     </FlyoutLink>
 
-                    <FlyoutLink href="/servicios" FlyoutContent={ServicesContent} whiteText={location.pathname === '/' || scrolled}>
+                    <FlyoutLink href="/servicios" FlyoutContent={ServicesContent} whiteText={shouldUseWhiteText}>
                         Servicios
                     </FlyoutLink>
 
-                    <FlyoutLink href="/branding" FlyoutContent={BrandingContent} whiteText={location.pathname === '/' || scrolled}>
+                    <FlyoutLink href="/branding" FlyoutContent={BrandingContent} whiteText={shouldUseWhiteText}>
                         Branding
                     </FlyoutLink>
 
-                    <NavLink to="/contacto" whiteText={location.pathname === '/contacto' || scrolled}>
+                    <NavLink to="/contacto" whiteText={shouldUseWhiteText}>
                         Contacto
                     </NavLink>
 
