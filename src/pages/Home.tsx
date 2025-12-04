@@ -1,7 +1,7 @@
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import HeroCinematic from '../components/HeroCinematic';
-import ClientsSection from '../components/ClientsSection';
+import PremiumClients from '../components/PremiumClients';
 import TestimonialsSection from '../components/TestimonialsSection';
 import PortfolioSection from '../components/PortfolioSection';
 import { ScrollReveal } from '../components/ScrollReveal';
@@ -30,8 +30,8 @@ const Home = () => {
             {/* Hero Section */}
             <HeroCinematic />
 
-            {/* Clients Marquee */}
-            <ClientsSection />
+            {/* Premium Clients Ecosystem */}
+            <PremiumClients />
 
             {/* Services Grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 border-b border-black/10">
