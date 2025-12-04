@@ -1,3 +1,4 @@
 [ZoneTransfer]
 ZoneId=3
-HostUrl=https://media-transformation.canva.com/6e827ffc-396e-4deb-8d7e-c620806d953e.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUHS2JMIWUE%2F20251204%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20251204T120941Z&X-Amz-Expires=17509&X-Amz-Signature=a5ae15dc53fea58238148acdd25db964da6421ddee0edbabbb78c09e3b176807&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%276e827ffc-396e-4deb-8d7e-c620806d953e.png&response-expires=Thu%2C%2004%20Dec%202025%2017%3A01%3A30%20GMT
+ReferrerUrl=https://www.canva.com/
+HostUrl=https://export-download.canva.com/xDui8/DAG4W_xDui8/6/0/0001-3274603527916918310.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20251203%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20251203T191929Z&X-Amz-Expires=77844&X-Amz-Signature=f0884e0e24a9c199de452560e9bd22299005b0f41395aba1597fd711a5440726&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27Dise%25C3%25B1o%2520sin%2520t%25C3%25ADtulo.png&response-expires=Thu%2C%2004%20Dec%202025%2016%3A56%3A53%20GMT
