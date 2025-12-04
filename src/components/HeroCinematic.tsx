@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 const HeroCinematic = () => {
     const videoRef = useRef<HTMLVideoElement>(null);
+    const [isVideoEnded, setIsVideoEnded] = useState(false);
 
     useEffect(() => {
         if (videoRef.current) {
@@ -16,43 +17,20 @@ const HeroCinematic = () => {
         <section className="relative h-screen w-full overflow-hidden bg-black text-white">
             {/* 1. Background Visual - The "Hero" */}
             <div className="absolute inset-0 z-0">
-                {/* Video Background with Fallback */}
+                {/* Video Background */}
                 <video
                     ref={videoRef}
                     autoPlay
                     muted
                     playsInline
                     className="absolute inset-0 w-full h-full object-cover z-0"
-                    poster="/images/hero-printer.webp"
                     onEnded={() => {
-                        // Optional: Ensure it stays paused at the end (default behavior, but explicit is safer)
                         if (videoRef.current) videoRef.current.pause();
+                        setIsVideoEnded(true);
                     }}
                 >
                     <source src="/images/Video.mp4" type="video/mp4" />
-                    {/* Fallback to Cinematic Motion if video fails/missing */}
                 </video>
-
-                {/* Cinematic Motion (Ken Burns Effect) - Visible only if video doesn't load (handled via CSS/JS usually, but here we layer it behind or use it as poster) 
-                    For this implementation, we'll keep the motion div as a backup layer that shows if the video is transparent or missing.
-                */}
-                <motion.div
-                    initial={{ scale: 1 }}
-                    animate={{ scale: 1.1 }}
-                    transition={{
-                        duration: 20,
-                        repeat: Infinity,
-                        repeatType: "reverse",
-                        ease: "linear"
-                    }}
-                    className="absolute inset-0 w-full h-full -z-10"
-                >
-                    <img
-                        src="/images/hero-printer.webp"
-                        alt="Industrial Print Lab"
-                        className="w-full h-full object-cover opacity-60"
-                    />
-                </motion.div>
 
                 {/* Gradient Overlay for Text Readability - Top (Navbar) & Left (Text) */}
                 <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent z-10" />
@@ -86,7 +64,7 @@ const HeroCinematic = () => {
                         className="text-[12vw] leading-[0.85] font-black uppercase tracking-tighter mb-8"
                     >
                         Revolución <br />
-                        <span className="text-transparent text-stroke-white hover:text-white transition-colors duration-500 cursor-default">
+                        <span className={`transition-colors duration-1000 cursor-default ${isVideoEnded ? 'text-white' : 'text-transparent text-stroke-white hover:text-white'}`}>
                             Visual
                         </span>
                         <span className="text-[var(--color-signal-pink)]">.</span>
