@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 interface FlyoutLinkProps {
     children: React.ReactNode;
@@ -19,7 +20,7 @@ const FlyoutLink = ({ children, href, FlyoutContent, whiteText = false }: Flyout
             onMouseLeave={() => setOpen(false)}
             className="relative h-fit w-fit"
         >
-            <a href={href} className={`relative font-bold uppercase tracking-widest hover:text-[var(--color-signal-pink)] transition-colors ${whiteText ? 'text-white' : 'text-black'}`}>
+            <Link to={href} className={`relative text-sm font-bold uppercase tracking-widest hover:text-[var(--color-signal-pink)] transition-colors ${whiteText ? 'text-white' : 'text-black/80'}`}>
                 {children}
                 <span
                     style={{
@@ -27,7 +28,7 @@ const FlyoutLink = ({ children, href, FlyoutContent, whiteText = false }: Flyout
                     }}
                     className="absolute -bottom-2 -left-2 -right-2 h-1 origin-left scale-x-0 rounded-full bg-[var(--color-signal-pink)] transition-transform duration-300 ease-out"
                 />
-            </a>
+            </Link>
             <AnimatePresence>
                 {showFlyout && (
                     <motion.div
